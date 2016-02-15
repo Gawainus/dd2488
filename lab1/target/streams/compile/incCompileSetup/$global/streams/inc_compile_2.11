@@ -4,7 +4,7 @@ output mode:
 0 -> single
 output directories:
 1 items
-output dir -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes
+output dir -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes
 compile options:
 0 items
 javac options:
@@ -19,40 +19,45 @@ name hashing:
 1 items
 0 -> true
 products:
-25 items
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetData$.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetData.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$1.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$toTweetSet$1.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$unparseToData$1.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$$anonfun$getTweetData$1.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$$anonfun$getTweets$1.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Cons.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Empty.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$$anonfun$1.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$delayedInit$body.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Nil$.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Nil.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/NonEmpty.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Tweet.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetList$class.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetList.class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetSet.class
+30 items
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetData$.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetData.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$toTweetSet$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$unparseToData$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$$anonfun$getTweetData$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$$anonfun$getTweets$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Cons.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Empty.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$$anonfun$appleTweets$1$$anonfun$apply$2.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$$anonfun$appleTweets$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$$anonfun$googleTweets$1$$anonfun$apply$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$$anonfun$googleTweets$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$$anonfun$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$delayedInit$body.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Nil$.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Nil.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/NonEmpty$$anonfun$mostRetweeted$1.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/NonEmpty.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Tweet.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetList$class.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetList.class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetSet.class
 binary dependencies:
 6 items
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/jre/lib/rt.jar
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/jre/lib/rt.jar
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.4.jar
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/jre/lib/rt.jar
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.4.jar
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.4.jar
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.4.jar
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar
 direct source dependencies:
 0 items
 direct external dependencies:
@@ -63,9 +68,9 @@ public inherited external dependencies:
 0 items
 member reference internal dependencies:
 3 items
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> /home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> /home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala
 member reference external dependencies:
 0 items
 inheritance internal dependencies:
@@ -73,248 +78,281 @@ inheritance internal dependencies:
 inheritance external dependencies:
 0 items
 class names:
-25 items
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> objsets.TweetData
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> objsets.TweetData$
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$$anonfun$1
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$$anonfun$toTweetSet$1
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$$anonfun$unparseToData$1
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$ParseTweets$
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$ParseTweets$$anonfun$getTweetData$1
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$ParseTweets$$anonfun$getTweets$1
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Cons
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Empty
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.GoogleVsApple
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.GoogleVsApple$
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Main
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Main$
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Main$$anonfun$1
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Main$delayedInit$body
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Nil
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Nil$
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.NonEmpty
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Tweet
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.TweetList
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.TweetList$class
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.TweetSet
+30 items
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> objsets.TweetData
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> objsets.TweetData$
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$$anonfun$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$$anonfun$toTweetSet$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$$anonfun$unparseToData$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$ParseTweets$
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$ParseTweets$$anonfun$getTweetData$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets.TweetReader$ParseTweets$$anonfun$getTweets$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Cons
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Empty
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.GoogleVsApple
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.GoogleVsApple$
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.GoogleVsApple$$anonfun$appleTweets$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.GoogleVsApple$$anonfun$appleTweets$1$$anonfun$apply$2
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.GoogleVsApple$$anonfun$googleTweets$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.GoogleVsApple$$anonfun$googleTweets$1$$anonfun$apply$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Main
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Main$
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Main$$anonfun$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Main$delayedInit$body
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Nil
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Nil$
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.NonEmpty
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.NonEmpty$$anonfun$mostRetweeted$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.Tweet
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.TweetList
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.TweetList$class
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets.TweetSet
 used names:
-154 items
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> <init>
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> AnyRef
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> CNET
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> TechCrunch
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> TweetData
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> amazondeals
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> engadget
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> gadgetlab
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> gizmodo
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> mashable
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> objsets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> scala
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> +
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> ++
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> ->
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> <init>
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Any
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> AnyRef
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> CNET
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Empty
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> JSON
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> List
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Map
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> ParseTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Predef
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Seq
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> String
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> StringBuffer
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> T
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> TechCrunch
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Tweet
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> TweetData
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> TweetReader
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> TweetSet
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> acc
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> allTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> amazondeals
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> amazondealsTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> append
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> apply
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> asInstanceOf
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> augmentString
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> buf
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> canBuildFrom
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> cnetTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> collection
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> curSets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> engadget
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> engadgetTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> foldLeft
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> foreach
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> gadgetlab
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> gadgetlabTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> get
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> getList
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> getTweetData
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> gizmodo
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> gizmodoTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> head
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> immutable
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> incl
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> isEmpty
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> java
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> json
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> l
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> lang
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> map
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> mashable
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> mashableTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> package
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> parseFull
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> parsing
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> replaceAll
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> retweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> s
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> scala
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> siteTweetSetMap
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> sites
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> sources
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tail
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> techCrunchTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> text
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> toDouble
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> toInt
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> toString
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> toTweetSet
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tw
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tweetMap
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tweetSets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tws
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> union
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> unionOfAllTweetSets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> user
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> util
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> zip
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> +
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> <
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> <init>
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> ???
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> AnyRef
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> App
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Boolean
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Cons
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Empty
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Function1
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> GoogleVsApple
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Int
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> List
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Main
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Nil
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> NoSuchElementException
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> NonEmpty
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Predef
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> String
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Tweet
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> TweetList
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> TweetReader
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> TweetSet
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Unit
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> _root_
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> apple
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> appleTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> apply
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> augmentString
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> contains
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> elem
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> f
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> foreach
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> google
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> googleTweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> head
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> immutable
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> incl
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> isEmpty
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> java
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> left
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> println
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> remove
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> retweets
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> right
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> scala
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> tail
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> text
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> trending
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> tw
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> tweet
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> unary_!
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> union
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> user
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> util
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> x
+171 items
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> <init>
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> AnyRef
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> CNET
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> TechCrunch
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> TweetData
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> amazondeals
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> engadget
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> gadgetlab
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> gizmodo
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> mashable
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> objsets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> scala
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> +
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> ++
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> ->
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> <init>
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Any
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> AnyRef
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> CNET
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Empty
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> JSON
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> List
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Map
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> ParseTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Predef
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Seq
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> String
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> StringBuffer
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> T
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> TechCrunch
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> Tweet
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> TweetData
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> TweetReader
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> TweetSet
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> acc
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> allTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> amazondeals
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> amazondealsTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> append
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> apply
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> asInstanceOf
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> augmentString
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> buf
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> canBuildFrom
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> cnetTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> collection
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> curSets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> engadget
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> engadgetTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> foldLeft
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> foreach
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> gadgetlab
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> gadgetlabTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> get
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> getList
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> getTweetData
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> gizmodo
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> gizmodoTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> head
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> immutable
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> incl
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> isEmpty
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> java
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> json
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> l
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> lang
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> map
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> mashable
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> mashableTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> objsets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> package
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> parseFull
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> parsing
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> replaceAll
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> retweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> s
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> scala
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> siteTweetSetMap
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> sites
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> sources
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tail
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> techCrunchTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> text
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> toDouble
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> toInt
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> toString
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> toTweetSet
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tw
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tweetMap
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tweetSets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> tws
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> union
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> unionOfAllTweetSets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> user
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> util
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> zip
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> !=
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> +
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> <
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> <init>
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> >
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> AnyRef
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> App
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Boolean
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Cons
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Empty
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Function1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> GoogleVsApple
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Int
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> List
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Main
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Nil
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> NoSuchElementException
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> NonEmpty
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Predef
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> String
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Tweet
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> TweetList
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> TweetReader
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> TweetSet
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> Unit
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> _root_
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> acc
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> allTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> apple
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> appleTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> apply
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> augmentString
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> contains
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> copy
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> descendingByRetweet
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> elem
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> exists
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> f
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> filter
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> filterAcc
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> foreach
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> google
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> googleTweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> head
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> immutable
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> incl
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> isEmpty
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> java
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> left
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> most
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> mostRetweeted
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> objsets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> p
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> println
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> remove
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> retweets
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> right
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> scala
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> tail
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> text
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> that
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> toString
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> trending
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> ts
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> tw
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> tweet
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> tweetList
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> unary_!
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> union
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> user
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> util
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> while$1
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> word
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> x
 product stamps:
-25 items
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Cons.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Empty.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$$anonfun$1.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$delayedInit$body.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Nil$.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Nil.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/NonEmpty.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Tweet.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetData$.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetData.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetList$class.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetList.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$1.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$toTweetSet$1.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$unparseToData$1.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$$anonfun$getTweetData$1.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$$anonfun$getTweets$1.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader.class -> lastModified(1454590516000)
-/Users/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetSet.class -> lastModified(1454590516000)
+30 items
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Cons.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Empty.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$$anonfun$appleTweets$1$$anonfun$apply$2.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$$anonfun$appleTweets$1.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$$anonfun$googleTweets$1$$anonfun$apply$1.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$$anonfun$googleTweets$1.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple$.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/GoogleVsApple.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$$anonfun$1.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main$delayedInit$body.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Main.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Nil$.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Nil.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/NonEmpty$$anonfun$mostRetweeted$1.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/NonEmpty.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/Tweet.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetData$.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetData.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetList$class.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetList.class -> lastModified(1455567228000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$1.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$toTweetSet$1.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$$anonfun$unparseToData$1.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$$anonfun$getTweetData$1.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$$anonfun$getTweets$1.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader$ParseTweets$.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetReader.class -> lastModified(1455566460000)
+/home/yumentsao/dd2488/lab1/target/scala-2.11/classes/objsets/TweetSet.class -> lastModified(1455567228000)
 source stamps:
 3 items
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> hash(777a27a2b5ac36c3e19a8721c5c885e397664dff)
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> hash(9bf9247ca2ed3966a673cef172ec6c484aa0660b)
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> hash(d656f50898d8754e1005c7b5b449e69780137ca9)
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> hash(777a27a2b5ac36c3e19a8721c5c885e397664dff)
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> hash(9bf9247ca2ed3966a673cef172ec6c484aa0660b)
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> hash(cec0b338109142628f385bcecfe1608feb46ca2c)
 binary stamps:
 3 items
-/Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/jre/lib/rt.jar -> lastModified(1450827058000)
-/Users/yumentsao/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar -> lastModified(1418602860000)
-/Users/yumentsao/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.4.jar -> lastModified(1414078440000)
+/home/yumentsao/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar -> lastModified(1418602860000)
+/home/yumentsao/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.4.jar -> lastModified(1414078440000)
+/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar -> lastModified(1453348588000)
 class names:
 3 items
-/Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/jre/lib/rt.jar -> java.lang.Object
-/Users/yumentsao/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar -> scala.util.parsing.json.JSON$
-/Users/yumentsao/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.4.jar -> scala.App
+/home/yumentsao/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar -> scala.util.parsing.json.JSON$
+/home/yumentsao/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.4.jar -> scala.App
+/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar -> java.lang.Object
 internal apis:
 3 items
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> 
-rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHC1Qr77AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAG3NyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cFfWSdB0AAZub3RpZnlzcQB+AAxDiLdYdAALYW1hem9uZGVhbHNzcQB+AAzB9PrkdAAEQ05FVHNxAH4ADLiSGK90AAdnaXptb2Rvc3EAfgAMzn6MUnQABHdhaXRzcQB+AAzseQ0+dAANJGFzSW5zdGFuY2VPZnNxAH4ADCy4dJx0AAhtYXNoYWJsZXNxAH4ADMOOFm10AAlnYWRnZXRsYWJzcQB+AAylZ+ZKdAAGZXF1YWxzc3EAfgAMqzntPHQADGFzSW5zdGFuY2VPZnNxAH4ADNqr67R0AAxzeW5jaHJvbml6ZWRzcQB+AAykTZNkdAAIZW5nYWRnZXRzcQB+AAwJADQtdAAJVHdlZXREYXRhc3EAfgAMkoKre3QADSRpc0luc3RhbmNlT2ZzcQB+AAxcoKwSdAAJbm90aWZ5QWxsc3EAfgAMMH7aiHQADGlzSW5zdGFuY2VPZnNxAH4ADJr9+gJ0AAI9PXNxAH4ADObl6Vp0AAVjbG9uZXNxAH4ADBhTlBB0AAh0b1N0cmluZ3NxAH4ADG03mBV0AAIhPXNxAH4ADH+KJ2B0AAhnZXRDbGFzc3NxAH4ADJ0Sd7l0AAJuZXNxAH4ADBeOk5l0AApUZWNoQ3J1bmNoc3EAfgAMruG0jXQAAmVxc3EAfgAMKpb2rnQAAiMjc3EAfgAMNYI0onQACGZpbmFsaXplc3EAfgAMfKC1I3QACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4ATXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHQAEW9ianNldHMuVHdlZXREYXRhdXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAGTW9kdWxldXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyABN4c2J0aS5TYWZlTGF6eSRJbXBsUAIuk5eXQD8CAANaAAhiaXRtYXAkMEwAAl90dAASTGphdmEvbGFuZy9PYmplY3Q7TAAEZXZhbHQAEUxzY2FsYS9GdW5jdGlvbjA7eHIAFnhzYnRpLmFwaS5BYnN0cmFjdExhennTd7UBX7vnoAIAAHhwAHBzcgAgeHNidGkuU2FmZUxhenkkJGFub25mdW4kc3RyaWN0JDEAAAAAAAAAAAIAAUwAB3ZhbHVlJDFxAH4AZnhwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4AZQBwc3EAfgBqc3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AE1MAAlpbmhlcml0ZWRxAH4ATUwAB3BhcmVudHNxAH4ATXhxAH4AbnNxAH4AZQBwc3EAfgBqdXEAfgBIAAAAAHNxAH4AZQBwc3EAfgBqdXEAfgBIAAAAAHNxAH4AZQBwc3EAfgBqdXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAJzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgBtdAAGT2JqZWN0c3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgBtc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAADc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADXhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AARqYXZhc3EAfgCKdAAEbGFuZ3NyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgCLc3EAfgB+dAADQW55c3EAfgCCc3EAfgCFdXEAfgCIAAAAAnNxAH4AinQABXNjYWxhcQB+AJF1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAXNyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgANeHB0AAdvYmpzZXRzc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFSrFmpRXVyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0ADYvVXNlcnMveXVtZW50c2FvL2RkMjQ4OC9sYWIxL3RhcmdldC9zY2FsYS0yLjExL2NsYXNzZXN0AAEvdXIAAltCrPMX+AYIVOACAAB4cAAAABR3eieitaw2w+GahyHFyIXjl2ZN/w==
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> 
-rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHDKEHlhAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAKXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cLAN1Q10AAZub3RpZnlzcQB+AAyh2lTydAAOZW5nYWRnZXRUd2VldHNzcQB+AAzjNNa8dAAEd2FpdHNxAH4ADHGaEGR0AA5tYXNoYWJsZVR3ZWV0c3NxAH4ADImefJV0AAtUd2VldFJlYWRlcnNxAH4ADEVODmp0AA0kYXNJbnN0YW5jZU9mc3EAfgAMRxJaiHQAC1BhcnNlVHdlZXRzc3EAfgAMSmWTZXQABmVxdWFsc3NxAH4ADJeVB810AA9zaXRlVHdlZXRTZXRNYXBzcQB+AAyNWvY8dAAMYXNJbnN0YW5jZU9mc3EAfgAMQlXjRHQADHN5bmNocm9uaXplZHNxAH4ADEaH4PR0AAlnZXRUd2VldHNzcQB+AAwBA3MxdAAIdHdlZXRNYXBzcQB+AAx5+L46dAANJGlzSW5zdGFuY2VPZnNxAH4ADIpz2FZ0AAZnZXRNYXBzcQB+AAyYrgZKdAAJbm90aWZ5QWxsc3EAfgAMzFbU4nQADGlzSW5zdGFuY2VPZnNxAH4ADG4QsW90AApjbmV0VHdlZXRzc3EAfgAMQFdUgXQAEWFtYXpvbmRlYWxzVHdlZXRzc3EAfgAMoMTwynQACWFsbFR3ZWV0c3NxAH4ADGCYff10AA1naXptb2RvVHdlZXRzc3EAfgAMpqRmTnQAE3VuaW9uT2ZBbGxUd2VldFNldHNzcQB+AAxB4X4GdAAMZ2V0VHdlZXREYXRhc3EAfgAMAtj9fnQAEHRlY2hDcnVuY2hUd2VldHNzcQB+AAzHSBH4dAAKdG9Ud2VldFNldHNxAH4ADHRWEdt0AAI9PXNxAH4ADIwYmQ50AAVjbG9uZXNxAH4ADJagiBN0AA9nYWRnZXRsYWJUd2VldHNzcQB+AAwO6asOdAAHZ2V0TGlzdHNxAH4ADNgbJYx0AAh0b1N0cmluZ3NxAH4ADG7Cz550AAIhPXNxAH4ADLxvlIN0AAhnZXRDbGFzc3NxAH4ADHdFviR0AAVzaXRlc3NxAH4ADOd8YE50AA11bnBhcnNlVG9EYXRhc3EAfgAMOd2ktnQAAm5lc3EAfgAMth2denQACXR3ZWV0U2V0c3NxAH4ADMCSZCB0AAdzb3VyY2Vzc3EAfgAMx43nuXQAAmVxc3EAfgAM6Z7953QAAiMjc3EAfgAMMPxcDHQACGZpbmFsaXplc3EAfgAMjTtKz3QACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4AaXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHQAE29ianNldHMuVHdlZXRSZWFkZXJ1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAZNb2R1bGV1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgCCeHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgCBAHBzcQB+AIZzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4AaUwACWluaGVyaXRlZHEAfgBpTAAHcGFyZW50c3EAfgBpeHEAfgCKc3EAfgCBAHBzcQB+AIZ1cQB+AGQAAAAAc3EAfgCBAHBzcQB+AIZ1cQB+AGQAAAAAc3EAfgCBAHBzcQB+AIZ1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAAnNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AIl0AAZPYmplY3RzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AIlzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAANzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABGphdmFzcQB+AKZ0AARsYW5nc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AKdzcQB+AJp0AANBbnlzcQB+AJ5zcQB+AKF1cQB+AKQAAAACc3EAfgCmdAAFc2NhbGFxAH4ArXVyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAABc3IAEXhzYnRpLmFwaS5QYWNrYWdlflmP9q7OOVgCAAFMAARuYW1lcQB+AA14cHQAB29ianNldHNzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAVKsWalFdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQANi9Vc2Vycy95dW1lbnRzYW8vZGQyNDg4L2xhYjEvdGFyZ2V0L3NjYWxhLTIuMTEvY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFJv5JHyi7TlmpnPO8XLsbEhKoGYL
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> 
-rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHChkUCVAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAANnNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cLx/qil0AAZub3RpZnlzcQB+AAzA6BoYdAATZGVzY2VuZGluZ0J5UmV0d2VldHNxAH4ADJtqU8J0AA1Hb29nbGVWc0FwcGxlc3EAfgAMAhW3TnQAA05pbHNxAH4ADP7foLx0AAR3YWl0c3EAfgAM3TYaR3QADSRhc0luc3RhbmNlT2ZzcQB+AAzorpb0dAAFdW5pb25zcQB+AAxwO/eIdAAGZXF1YWxzc3EAfgAMSDEsOHQACWZpbHRlckFjY3NxAH4ADP+1vuV0AARoZWFkc3EAfgAMUmbxFnQADGFzSW5zdGFuY2VPZnNxAH4ADJXhXgp0AA5leGVjdXRpb25TdGFydHNxAH4ADJRhj0l0AARpbmNsc3EAfgAM95JIe3QADHN5bmNocm9uaXplZHNxAH4ADE9BTRh0AA0kaXNJbnN0YW5jZU9mc3EAfgAMxv+4cnQACVR3ZWV0TGlzdHNxAH4ADKE9Xfp0AAZnb29nbGVzcQB+AAxY5fPqdAAEdGV4dHNxAH4ADBq74vJ0AA1tb3N0UmV0d2VldGVkc3EAfgAMCSiCQnQABHRhaWxzcQB+AAw5oVZ9dAAEbWFpbnNxAH4ADN/sMbl0AAhyZXR3ZWV0c3NxAH4ADDmSWpx0AARDb25zc3EAfgAM6EI1+3QACW5vdGlmeUFsbHNxAH4ADDLkeXN0AAxpc0luc3RhbmNlT2ZzcQB+AAwKPLdCdAAGZmlsdGVyc3EAfgAMkB0JnnQABjxpbml0PnNxAH4ADG367Sl0AAZyZW1vdmVzcQB+AAystxCpdAAFRW1wdHlzcQB+AAxOokVGdAACPT1zcQB+AAwIbdK/dAAFY2xvbmVzcQB+AAxN+AzsdAAHZm9yZWFjaHNxAH4ADK41L8F0AAVUd2VldHNxAH4ADJC16lp0AAYkaW5pdCRzcQB+AAyGKutPdAAIVHdlZXRTZXRzcQB+AAx0LWordAAETWFpbnNxAH4ADGndcut0AAh0b1N0cmluZ3NxAH4ADDOwXkR0AARhcmdzc3EAfgAM4MPnPXQABWFwcGxlc3EAfgAMbCkJpXQAAiE9c3EAfgAMjBdzvnQACGdldENsYXNzc3EAfgAMCUBo33QADGdvb2dsZVR3ZWV0c3NxAH4ADLWi3bJ0AAhjb250YWluc3NxAH4ADPvDPdx0AAdpc0VtcHR5c3EAfgAMl93tN3QAAm5lc3EAfgAM+/I58XQACHRyZW5kaW5nc3EAfgAMXbIgRnQABHVzZXJzcQB+AAwVG/yqdAACZXFzcQB+AAwtEwyidAAITm9uRW1wdHlzcQB+AAw97bafdAALZGVsYXllZEluaXRzcQB+AAyX9O/DdAACIyNzcQB+AAwFi2BXdAALYXBwbGVUd2VldHNzcQB+AAxyshlPdAAIZmluYWxpemVzcQB+AAzvhi5jdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAAJc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgCDeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAdAANb2Jqc2V0cy5Ud2VldHVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyABN4c2J0aS5TYWZlTGF6eSRJbXBsUAIuk5eXQD8CAANaAAhiaXRtYXAkMEwAAl90dAASTGphdmEvbGFuZy9PYmplY3Q7TAAEZXZhbHQAEUxzY2FsYS9GdW5jdGlvbjA7eHIAFnhzYnRpLmFwaS5BYnN0cmFjdExhennTd7UBX7vnoAIAAHhwAHBzcgAgeHNidGkuU2FmZUxhenkkJGFub25mdW4kc3RyaWN0JDEAAAAAAAAAAAIAAUwAB3ZhbHVlJDFxAH4AnHhwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4AmwBwc3EAfgCgc3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AINMAAlpbmhlcml0ZWRxAH4Ag0wAB3BhcmVudHNxAH4Ag3hxAH4ApHNxAH4AmwBwc3EAfgCgdXEAfgB+AAAAAHNxAH4AmwBwc3EAfgCgdXEAfgB+AAAAAHNxAH4AmwBwc3EAfgCgdXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAJzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgCjdAAGT2JqZWN0c3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgCjc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAADc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADXhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AARqYXZhc3EAfgDAdAAEbGFuZ3NyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgDBc3EAfgC0dAADQW55c3EAfgC4c3EAfgC7dXEAfgC+AAAAAnNxAH4AwHQABXNjYWxhcQB+AMdzcQB+AIBxAH4AjXVxAH4AjgAAAABzcQB+AJABdAAQb2Jqc2V0cy5Ud2VldFNldHVxAH4AkwAAAABxAH4Al3VxAH4AmQAAAABzcQB+AJsAcHNxAH4AoHEAfgClc3EAfgCbAHBzcQB+AKBzcQB+AKhzcQB+AJsAcHNxAH4AoHVxAH4AfgAAAABzcQB+AJsAcHNxAH4AoHVxAH4AfgAAAABzcQB+AJsAcHNxAH4AoHVxAH4AsgAAAAJzcQB+ALRxAH4At3NxAH4AuHNxAH4Au3VxAH4AvgAAAANzcQB+AMBxAH4Aw3NxAH4AwHEAfgDFcQB+AMdzcQB+ALRxAH4AyXNxAH4AuHNxAH4Au3VxAH4AvgAAAAJzcQB+AMBxAH4AznEAfgDHc3EAfgCAcQB+AI11cQB+AI4AAAAAc3EAfgCQAHQADW9ianNldHMuRW1wdHl1cQB+AJMAAAAAcQB+AJd1cQB+AJkAAAAAc3EAfgCbAHBzcQB+AKBxAH4ApXNxAH4AmwBwc3EAfgCgc3EAfgCoc3EAfgCbAHBzcQB+AKB1cQB+AH4AAAAAc3EAfgCbAHBzcQB+AKB1cQB+AH4AAAAAc3EAfgCbAHBzcQB+AKB1cQB+ALIAAAADc3EAfgC0dAAIVHdlZXRTZXRzcQB+ALhzcQB+ALt1cQB+AL4AAAACc3EAfgDAdAAHb2Jqc2V0c3EAfgDHc3EAfgC0cQB+ALdzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMNzcQB+AMBxAH4AxXEAfgDHc3EAfgC0cQB+AMlzcQB+ALhzcQB+ALt1cQB+AL4AAAACc3EAfgDAcQB+AM5xAH4Ax3NxAH4AgHEAfgCNdXEAfgCOAAAAAHNxAH4AkAB0ABBvYmpzZXRzLk5vbkVtcHR5dXEAfgCTAAAAAHEAfgCXdXEAfgCZAAAAAHNxAH4AmwBwc3EAfgCgcQB+AKVzcQB+AJsAcHNxAH4AoHNxAH4AqHNxAH4AmwBwc3EAfgCgdXEAfgB+AAAAAHNxAH4AmwBwc3EAfgCgdXEAfgB+AAAAAHNxAH4AmwBwc3EAfgCgdXEAfgCyAAAAA3NxAH4AtHQACFR3ZWV0U2V0c3EAfgC4c3EAfgC7dXEAfgC+AAAAAnNxAH4AwHQAB29ianNldHNxAH4Ax3NxAH4AtHEAfgC3c3EAfgC4c3EAfgC7dXEAfgC+AAAAA3NxAH4AwHEAfgDDc3EAfgDAcQB+AMVxAH4Ax3NxAH4AtHEAfgDJc3EAfgC4c3EAfgC7dXEAfgC+AAAAAnNxAH4AwHEAfgDOcQB+AMdzcQB+AIBxAH4AjXVxAH4AjgAAAABzcQB+AJABdAARb2Jqc2V0cy5Ud2VldExpc3R1cQB+AJMA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AAB0ACooIm1haW4gc2hvdWxkIG5vdCBiZSBvdmVycmlkZGVuIiwiMi4xMS4wIilzcQB+ALR0ABRkZXByZWNhdGVkT3ZlcnJpZGluZ3NxAH4AuHNxAH4Au3VxAH4AvgAAAAJzcQB+AMBxAH4AznEAfgDHc3EAfgCQAHEAfgA3dXEAfgCTAAAAAHNxAH4AtHQABFVuaXRxAH4B63VyABpbTHhzYnRpLmFwaS5QYXJhbWV0ZXJMaXN0O/XTOh3ys3DuAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5QYXJhbWV0ZXJMaXN01sW8HGRJdOMCAAJaAAppc0ltcGxpY2l0WwAKcGFyYW1ldGVyc3QAHFtMeHNidGkvYXBpL01ldGhvZFBhcmFtZXRlcjt4cAB1cgAcW0x4c2J0aS5hcGkuTWV0aG9kUGFyYW1ldGVyO8+4xV2l3bVtAgAAeHAAAAABc3IAGXhzYnRpLmFwaS5NZXRob2RQYXJhbWV0ZXIfRa4X00mw6gIABFoACmhhc0RlZmF1bHRMAAhtb2RpZmllcnQAHUx4c2J0aS9hcGkvUGFyYW1ldGVyTW9kaWZpZXI7TAAEbmFtZXEAfgANTAADdHBlcQB+Adx4cAB+cgAbeHNidGkuYXBpLlBhcmFtZXRlck1vZGlmaWVyAAAAAAAAAAASAAB4cQB+AJZ0AAVQbGFpbnEAfgBZc3IAF3hzYnRpLmFwaS5QYXJhbWV0ZXJpemVkFmzuaQPJu38CAAJMAAhiYXNlVHlwZXEAfgC1WwANdHlwZUFyZ3VtZW50c3QAEVtMeHNidGkvYXBpL1R5cGU7eHEAfgCjc3EAfgC0dAAFQXJyYXlxAH4B63VxAH4AsgAAAAFzcQB+ALR0AAZTdHJpbmdzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMNzcQB+AMBxAH4AxXEAfgDHc3EAfgCbAHBzcQB+AKB1cQB+ALIAAAAEc3EAfgC0dAADQXBwcQB+AetzcQB+ALR0AAtEZWxheWVkSW5pdHEAfgHrc3EAfgC0cQB+ALdxAH4CCHNxAH4AtHEAfgDJcQB+Aet1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAXNyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgANeHB0AAdvYmpzZXRzc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFSrFmpRXVyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0ADYvVXNlcnMveXVtZW50c2FvL2RkMjQ4OC9sYWIxL3RhcmdldC9zY2FsYS0yLjExL2NsYXNzZXN0AAEvdXIAAltCrPMX+AYIVOACAAB4cAAAABTWVvUImNh1ThAFx7W0SeaXgBN8qQ==
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHC1Qr77AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAG3NyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cFfWSdB0AAZub3RpZnlzcQB+AAxDiLdYdAALYW1hem9uZGVhbHNzcQB+AAzB9PrkdAAEQ05FVHNxAH4ADLiSGK90AAdnaXptb2Rvc3EAfgAMzn6MUnQABHdhaXRzcQB+AAzseQ0+dAANJGFzSW5zdGFuY2VPZnNxAH4ADCy4dJx0AAhtYXNoYWJsZXNxAH4ADMOOFm10AAlnYWRnZXRsYWJzcQB+AAylZ+ZKdAAGZXF1YWxzc3EAfgAMqzntPHQADGFzSW5zdGFuY2VPZnNxAH4ADNqr67R0AAxzeW5jaHJvbml6ZWRzcQB+AAykTZNkdAAIZW5nYWRnZXRzcQB+AAwJADQtdAAJVHdlZXREYXRhc3EAfgAMkoKre3QADSRpc0luc3RhbmNlT2ZzcQB+AAxcoKwSdAAJbm90aWZ5QWxsc3EAfgAMMH7aiHQADGlzSW5zdGFuY2VPZnNxAH4ADJr9+gJ0AAI9PXNxAH4ADObl6Vp0AAVjbG9uZXNxAH4ADBhTlBB0AAh0b1N0cmluZ3NxAH4ADG03mBV0AAIhPXNxAH4ADH+KJ2B0AAhnZXRDbGFzc3NxAH4ADJ0Sd7l0AAJuZXNxAH4ADBeOk5l0AApUZWNoQ3J1bmNoc3EAfgAMruG0jXQAAmVxc3EAfgAMKpb2rnQAAiMjc3EAfgAMNYI0onQACGZpbmFsaXplc3EAfgAMfKC1I3QACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4ATXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHQAEW9ianNldHMuVHdlZXREYXRhdXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAGTW9kdWxldXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyABN4c2J0aS5TYWZlTGF6eSRJbXBsUAIuk5eXQD8CAANaAAhiaXRtYXAkMEwAAl90dAASTGphdmEvbGFuZy9PYmplY3Q7TAAEZXZhbHQAEUxzY2FsYS9GdW5jdGlvbjA7eHIAFnhzYnRpLmFwaS5BYnN0cmFjdExhennTd7UBX7vnoAIAAHhwAXNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBwc3EAfgBlAXNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgBNTAAJaW5oZXJpdGVkcQB+AE1MAAdwYXJlbnRzcQB+AE14cQB+AGxzcQB+AGUBdXEAfgBIAAAAAHBzcQB+AGUBdXEAfgBIAAAAAHBzcQB+AGUBdXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAJzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgBrdAAGT2JqZWN0c3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgBrc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAADc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADXhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AARqYXZhc3EAfgCEdAAEbGFuZ3NyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgCFc3EAfgB4dAADQW55c3EAfgB8c3EAfgB/dXEAfgCCAAAAAnNxAH4AhHQABXNjYWxhcQB+AItwcHVyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAABc3IAEXhzYnRpLmFwaS5QYWNrYWdlflmP9q7OOVgCAAFMAARuYW1lcQB+AA14cHQAB29ianNldHNzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAVLmhZPwdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQANS9ob21lL3l1bWVudHNhby9kZDI0ODgvbGFiMS90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAUd3onorWsNsPhmochxciF45dmTf8=
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHDKEHlhAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAKXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cLAN1Q10AAZub3RpZnlzcQB+AAyh2lTydAAOZW5nYWRnZXRUd2VldHNzcQB+AAzjNNa8dAAEd2FpdHNxAH4ADHGaEGR0AA5tYXNoYWJsZVR3ZWV0c3NxAH4ADImefJV0AAtUd2VldFJlYWRlcnNxAH4ADEVODmp0AA0kYXNJbnN0YW5jZU9mc3EAfgAMRxJaiHQAC1BhcnNlVHdlZXRzc3EAfgAMSmWTZXQABmVxdWFsc3NxAH4ADJeVB810AA9zaXRlVHdlZXRTZXRNYXBzcQB+AAyNWvY8dAAMYXNJbnN0YW5jZU9mc3EAfgAMQlXjRHQADHN5bmNocm9uaXplZHNxAH4ADEaH4PR0AAlnZXRUd2VldHNzcQB+AAwBA3MxdAAIdHdlZXRNYXBzcQB+AAx5+L46dAANJGlzSW5zdGFuY2VPZnNxAH4ADIpz2FZ0AAZnZXRNYXBzcQB+AAyYrgZKdAAJbm90aWZ5QWxsc3EAfgAMzFbU4nQADGlzSW5zdGFuY2VPZnNxAH4ADG4QsW90AApjbmV0VHdlZXRzc3EAfgAMQFdUgXQAEWFtYXpvbmRlYWxzVHdlZXRzc3EAfgAMoMTwynQACWFsbFR3ZWV0c3NxAH4ADGCYff10AA1naXptb2RvVHdlZXRzc3EAfgAMpqRmTnQAE3VuaW9uT2ZBbGxUd2VldFNldHNzcQB+AAxB4X4GdAAMZ2V0VHdlZXREYXRhc3EAfgAMAtj9fnQAEHRlY2hDcnVuY2hUd2VldHNzcQB+AAzHSBH4dAAKdG9Ud2VldFNldHNxAH4ADHRWEdt0AAI9PXNxAH4ADIwYmQ50AAVjbG9uZXNxAH4ADJagiBN0AA9nYWRnZXRsYWJUd2VldHNzcQB+AAwO6asOdAAHZ2V0TGlzdHNxAH4ADNgbJYx0AAh0b1N0cmluZ3NxAH4ADG7Cz550AAIhPXNxAH4ADLxvlIN0AAhnZXRDbGFzc3NxAH4ADHdFviR0AAVzaXRlc3NxAH4ADOd8YE50AA11bnBhcnNlVG9EYXRhc3EAfgAMOd2ktnQAAm5lc3EAfgAMth2denQACXR3ZWV0U2V0c3NxAH4ADMCSZCB0AAdzb3VyY2Vzc3EAfgAMx43nuXQAAmVxc3EAfgAM6Z7953QAAiMjc3EAfgAMMPxcDHQACGZpbmFsaXplc3EAfgAMjTtKz3QACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4AaXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHQAE29ianNldHMuVHdlZXRSZWFkZXJ1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAZNb2R1bGV1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHABc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHBzcQB+AIEBc3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AGlMAAlpbmhlcml0ZWRxAH4AaUwAB3BhcmVudHNxAH4AaXhxAH4AiHNxAH4AgQF1cQB+AGQAAAAAcHNxAH4AgQF1cQB+AGQAAAAAcHNxAH4AgQF1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAAnNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AId0AAZPYmplY3RzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AIdzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAANzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABGphdmFzcQB+AKB0AARsYW5nc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AKFzcQB+AJR0AANBbnlzcQB+AJhzcQB+AJt1cQB+AJ4AAAACc3EAfgCgdAAFc2NhbGFxAH4Ap3BwdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAAFzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4ADXhwdAAHb2Jqc2V0c3NyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUuaFk/B1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdAA1L2hvbWUveXVtZW50c2FvL2RkMjQ4OC9sYWIxL3RhcmdldC9zY2FsYS0yLjExL2NsYXNzZXN0AAEvdXIAAltCrPMX+AYIVOACAAB4cAAAABSb+SR8ou05ZqZzzvFy7GxISqBmCw==
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHBOgN5yAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAN3NyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cLx/qil0AAZub3RpZnlzcQB+AAxwrTWydAATZGVzY2VuZGluZ0J5UmV0d2VldHNxAH4ADJtqU8J0AA1Hb29nbGVWc0FwcGxlc3EAfgAMAhW3TnQAA05pbHNxAH4ADP7foLx0AAR3YWl0c3EAfgAM3TYaR3QADSRhc0luc3RhbmNlT2ZzcQB+AAy3q8Z1dAAFdW5pb25zcQB+AAxwO/eIdAAGZXF1YWxzc3EAfgAMSDEsOHQACWZpbHRlckFjY3NxAH4ADP+1vuV0AARoZWFkc3EAfgAMUmbxFnQADGFzSW5zdGFuY2VPZnNxAH4ADJXhXgp0AA5leGVjdXRpb25TdGFydHNxAH4ADJRhj0l0AARpbmNsc3EAfgAM95JIe3QADHN5bmNocm9uaXplZHNxAH4ADE9BTRh0AA0kaXNJbnN0YW5jZU9mc3EAfgAMxv+4cnQACVR3ZWV0TGlzdHNxAH4ADKE9Xfp0AAZnb29nbGVzcQB+AAxY5fPqdAAEdGV4dHNxAH4ADFvBhD50AA1tb3N0UmV0d2VldGVkc3EAfgAMCSiCQnQABHRhaWxzcQB+AAw5oVZ9dAAEbWFpbnNxAH4ADN/sMbl0AAhyZXR3ZWV0c3NxAH4ADDmSWpx0AARDb25zc3EAfgAM6EI1+3QACW5vdGlmeUFsbHNxAH4ADDLkeXN0AAxpc0luc3RhbmNlT2ZzcQB+AAwKPLdCdAAGZmlsdGVyc3EAfgAMkB0JnnQABjxpbml0PnNxAH4ADMjj3v90AAlhbGxUd2VldHNzcQB+AAxt+u0pdAAGcmVtb3Zlc3EAfgAMrLcQqXQABUVtcHR5c3EAfgAMTqJFRnQAAj09c3EAfgAMCG3Sv3QABWNsb25lc3EAfgAMTfgM7HQAB2ZvcmVhY2hzcQB+AAyuNS/BdAAFVHdlZXRzcQB+AAyQtepadAAGJGluaXQkc3EAfgAMhirrT3QACFR3ZWV0U2V0c3EAfgAMdC1qK3QABE1haW5zcQB+AAxp3XLrdAAIdG9TdHJpbmdzcQB+AAwzsF5EdAAEYXJnc3NxAH4ADODD5z10AAVhcHBsZXNxAH4ADGwpCaV0AAIhPXNxAH4ADIwXc750AAhnZXRDbGFzc3NxAH4ADAlAaN90AAxnb29nbGVUd2VldHNzcQB+AAy1ot2ydAAIY29udGFpbnNzcQB+AAz7wz3cdAAHaXNFbXB0eXNxAH4ADJfd7Td0AAJuZXNxAH4ADPvyOfF0AAh0cmVuZGluZ3NxAH4ADF2yIEZ0AAR1c2Vyc3EAfgAMFRv8qnQAAmVxc3EAfgAMLRMMonQACE5vbkVtcHR5c3EAfgAMPe22n3QAC2RlbGF5ZWRJbml0c3EAfgAMl/Tvw3QAAiMjc3EAfgAMBYtgV3QAC2FwcGxlVHdlZXRzc3EAfgAMcrIZT3QACGZpbmFsaXplc3EAfgAM74YuY3QACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAACXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4AhXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHQADW9ianNldHMuVHdlZXR1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAhDbGFzc0RlZnVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cABwc3IAIHhzYnRpLlNhZmVMYXp5JCRhbm9uZnVuJHN0cmljdCQxAAAAAAAAAAACAAFMAAd2YWx1ZSQ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tZXEAfgANTAAFdmFsdWVxAH4ADXhwdAAAdAAqKCJtYWluIHNob3VsZCBub3QgYmUgb3ZlcnJpZGRlbiIsIjIuMTEuMCIpc3EAfgC2dAAUZGVwcmVjYXRlZE92ZXJyaWRpbmdzcQB+ALpzcQB+AL11cQB+AMAAAAACc3EAfgDCcQB+ANBxAH4AyXNxAH4AkgBxAH4AN3VxAH4AlQAAAABzcQB+ALZ0AARVbml0cQB+Ae11cgAaW0x4c2J0aS5hcGkuUGFyYW1ldGVyTGlzdDv10zod8rNw7gIAAHhwAAAAAXNyABd4c2J0aS5hcGkuUGFyYW1ldGVyTGlzdNbFvBxkSXTjAgACWgAKaXNJbXBsaWNpdFsACnBhcmFtZXRlcnN0ABxbTHhzYnRpL2FwaS9NZXRob2RQYXJhbWV0ZXI7eHAAdXIAHFtMeHNidGkuYXBpLk1ldGhvZFBhcmFtZXRlcjvPuMVdpd21bQIAAHhwAAAAAXNyABl4c2J0aS5hcGkuTWV0aG9kUGFyYW1ldGVyH0WuF9NJsOoCAARaAApoYXNEZWZhdWx0TAAIbW9kaWZpZXJ0AB1MeHNidGkvYXBpL1BhcmFtZXRlck1vZGlmaWVyO0wABG5hbWVxAH4ADUwAA3RwZXEAfgHeeHAAfnIAG3hzYnRpLmFwaS5QYXJhbWV0ZXJNb2RpZmllcgAAAAAAAAAAEgAAeHEAfgCYdAAFUGxhaW5xAH4AW3NyABd4c2J0aS5hcGkuUGFyYW1ldGVyaXplZBZs7mkDybt/AgACTAAIYmFzZVR5cGVxAH4At1sADXR5cGVBcmd1bWVudHN0ABFbTHhzYnRpL2FwaS9UeXBlO3hxAH4ApXNxAH4AtnQABUFycmF5cQB+Ae11cQB+ALQAAAABc3EAfgC2dAAGU3RyaW5nc3EAfgC6c3EAfgC9dXEAfgDAAAAAA3NxAH4AwnEAfgDFc3EAfgDCcQB+AMdxAH4AyXNxAH4AnQBwc3EAfgCidXEAfgC0AAAABHNxAH4AtnQAA0FwcHEAfgHtc3EAfgC2dAALRGVsYXllZEluaXRxAH4B7XNxAH4AtnEAfgC5cQB+AgpzcQB+ALZxAH4Ay3EAfgHtdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAAFzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4ADXhwdAAHb2Jqc2V0c3NyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUuaRTIV1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdAA1L2hvbWUveXVtZW50c2FvL2RkMjQ4OC9sYWIxL3RhcmdldC9zY2FsYS0yLjExL2NsYXNzZXN0AAEvdXIAAltCrPMX+AYIVOACAAB4cAAAABTOwLM4EJFCYo84W87P4WCP60bKLA==
 external apis:
 0 items
 source infos:
 3 items
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> 
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetData.scala -> 
 AAAAAAAAAAA=
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> 
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetReader.scala -> 
 AAAAAAAAAAA=
-/Users/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> 
+/home/yumentsao/dd2488/lab1/src/main/scala/objsets/TweetSet.scala -> 
 AAAAAAAAAAA=
 compilations:
-1 items
+7 items
 0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUqxZqUV1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQANi9Vc2Vycy95dW1lbnRzYW8vZGQyNDg4L2xhYjEvdGFyZ2V0L3NjYWxhLTIuMTEvY2xhc3Nlc3QAAS8=
+1 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUuZ2RN11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQANS9ob21lL3l1bWVudHNhby9kZDI0ODgvbGFiMS90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABLw==
+2 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUuaFkPd1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQANS9ob21lL3l1bWVudHNhby9kZDI0ODgvbGFiMS90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABLw==
+3 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUuaFk/B1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQANS9ob21lL3l1bWVudHNhby9kZDI0ODgvbGFiMS90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABLw==
+4 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUuaHrQZ1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQANS9ob21lL3l1bWVudHNhby9kZDI0ODgvbGFiMS90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABLw==
+5 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUuaOOfR1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQANS9ob21lL3l1bWVudHNhby9kZDI0ODgvbGFiMS90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABLw==
+6 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABUuaRTIV1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQANS9ob21lL3l1bWVudHNhby9kZDI0ODgvbGFiMS90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABLw==

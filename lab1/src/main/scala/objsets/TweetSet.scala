@@ -58,9 +58,7 @@ abstract class TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-   def union(that: TweetSet): TweetSet = {
-     new Empty()
-   }
+   def union(that: TweetSet): TweetSet
 
   /**
    * Returns the tweet from this set which has the greatest retweet count.
@@ -71,9 +69,7 @@ abstract class TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-  def mostRetweeted: Tweet = {
-    new Tweet("user", "text", 1)
-  }
+  def mostRetweeted: Tweet
 
   /**
    * Returns a list containing all tweets of this set, sorted by retweet count
@@ -84,9 +80,7 @@ abstract class TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-  def descendingByRetweet: TweetList = {
-    Nil
-  }
+  def descendingByRetweet: TweetList
 
 
   /**
@@ -119,7 +113,15 @@ abstract class TweetSet {
 
 class Empty extends TweetSet {
 
-  def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = this
+  def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = acc
+
+  def union(that: TweetSet) = that
+
+  def mostRetweeted = null
+
+  def descendingByRetweet: TweetList = {
+    Nil
+  }
 
   /**
    * The following methods are already implemented
@@ -136,8 +138,40 @@ class Empty extends TweetSet {
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
 
+  def mostRetweeted: Tweet = {
+    var most: Tweet = elem
+    foreach((tweet: Tweet) =>
+      if (tweet.retweets > most.retweets) {
+        most = tweet
+      }
+    )
+    most
+  }
+
+  def descendingByRetweet: TweetList = {
+    var tweetList: TweetList = Nil
+    var most: Tweet = mostRetweeted
+
+    var copy: TweetSet = this
+    while (most != null) {
+      copy = copy.remove(most)
+      tweetList = new Cons(most, tweetList)
+      most = copy.mostRetweeted
+    }
+    tweetList
+  }
+
   def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = {
-    foreach(tweet => if (p(tweet)) acc.include(tweet))
+    if (p(elem)) {
+      left.filterAcc(p, right.filterAcc(p, acc.incl(elem)))
+    }
+    else {
+      left.filterAcc(p, right.filterAcc(p, acc))
+    }
+  }
+
+  def union(that: TweetSet) = {
+    left.union(right.union(that)).incl(elem)
   }
 
   /**
@@ -212,23 +246,30 @@ object GoogleVsApple {
   val google = List("android", "Android", "galaxy", "Galaxy", "nexus", "Nexus")
   val apple = List("ios", "iOS", "iphone", "iPhone", "ipad", "iPad")
 
-  lazy val googleTweets: TweetSet = {
-    new Empty()
-  }
-  lazy val appleTweets: TweetSet = {
-    new Empty()
-  }
+  val allTweets: TweetSet = TweetReader.allTweets
+
+  lazy val googleTweets: TweetSet = allTweets.filter(
+    (tweet: Tweet) => google.exists(word => tweet.text.contains(word))
+  )
+
+  lazy val appleTweets: TweetSet = allTweets.filter(
+    (tweet: Tweet) => apple.exists(word => tweet.text.contains(word))
+  )
 
   /**
    * A list of all tweets mentioning a keyword from either apple or google,
    * sorted by the number of retweets.
    */
   lazy val trending: TweetList = {
-    Nil
+    appleTweets.union(googleTweets).descendingByRetweet
   }
 }
 
 object Main extends App {
   // Print the trending tweets
   GoogleVsApple.trending foreach println
+
+  println(GoogleVsApple.trending.head.toString())
+
+  println("The end.")
 }
