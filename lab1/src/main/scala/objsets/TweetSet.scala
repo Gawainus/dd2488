@@ -42,9 +42,7 @@ abstract class TweetSet {
    * and be implemented in the subclasses?
    */
   def filter(p: Tweet => Boolean): TweetSet = {
-    val ts = new Empty()
-    filterAcc(p, ts)
-    ts
+    filterAcc(p, new Empty())
   }
 
   /**
