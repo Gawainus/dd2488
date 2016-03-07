@@ -18,7 +18,7 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
 
     var eof: Boolean = false
     var currChar: Option[Char] = None
-    var peekChar: Option[Char] = None
+    var peekChar: Option[Char] = None // used to peek next char
     var pos = source.pos
 
     // Complete this file
@@ -49,19 +49,17 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
           }
 
           // try to skip white space and empty lines first
-          while((currChar.get.isWhitespace || currChar.get == '\n') && hasNext) {
+          while((currChar.get.isWhitespace || currChar.get == '\n') && source.hasNext) {
             currChar = Some(source.next)
-            println("currChar is ("+currChar.get+")")
+            // println("currChar is ("+currChar.get+")")
           }
 
           pos = source.pos
-
           /*
             read a char can be
             IDENTIFIER
           */
           if (currChar.get.isLetter) {
-
             var strBuff = new StringBuffer
             strBuff.append(currChar.get)
 
@@ -104,12 +102,17 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
           }
           else if (!currChar.get.isWhitespace) {
             // symbol
-            println("curr symbol is ("+currChar.get+")")
-            val matchedToken = matchChar(source, f, currChar.get, pos)
-            currChar = Some(source.next)
+            // println("curr symbol is ("+currChar.get+")")
+            val matchedToken = matchSymbol(source, f, currChar, pos)
+            if (source.hasNext) {
+              currChar = Some(source.next)
+            }
+            else {
+              currChar = None
+            }
             matchedToken
           }
-          else {
+          else { // only thing left is the bad things
             println("(" + currChar.get + ") made it bad.")
             new Token(BAD)
           }
@@ -118,9 +121,132 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
     } // end of Iterator[Token]
   } // end of run
 
+  private def matchSymbol(source: Source, f: File, cc: Option[Char], p: Int): Token = {
+
+    var peekChar: Option[Char] = None
+    var currChar = cc
+    var pos = p
+
+    currChar.get match {
+      case '(' => new Token(LPAREN).setPos(f, pos)
+      case ')' => new Token(RPAREN).setPos(f, pos)
+      case '+' => new Token(PLUS).setPos(f, pos)
+      case '*' => new Token(TIMES).setPos(f, pos)
+      case ':' => new Token(COLON).setPos(f, pos)
+      case ';' => new Token(SEMICOLON).setPos(f, pos)
+      case '.' => new Token(DOT).setPos(f, pos)
+      case ',' => new Token(COMMA).setPos(f, pos)
+      case '!' => new Token(BANG).setPos(f, pos)
+      case '[' => new Token(LBRACKET).setPos(f, pos)
+      case ']' => new Token(RBRACKET).setPos(f, pos)
+      case '{' => new Token(LBRACE).setPos(f, pos)
+      case '}' => new Token(RBRACE).setPos(f, pos)
+
+      case '=' => {
+        peekChar = peek(source)
+        if (peekChar.get == '=') {
+          currChar = None
+          new Token(EQUALS).setPos(f, pos)
+        } else {
+          currChar = peekChar
+          new Token(EQSIGN).setPos(f, pos)
+        }
+      }
+      case '<' => {
+        peekChar = peek(source)
+        if (peekChar.get == '=') {
+          currChar = None
+          new Token(LESSTHANEQUALS).setPos(f, pos)
+        } else {
+          currChar = peekChar
+          new Token(LESSTHAN).setPos(f, pos)
+        }
+      }
+      case '>' => {
+        peekChar = peek(source)
+        if (peekChar.get == '=') {
+          currChar = None
+          new Token(GREATERTHANEQUALS).setPos(f, pos)
+        } else {
+          currChar = peekChar
+          new Token(GREATERTHAN).setPos(f, pos)
+        }
+      }
+      case '&' => {
+        peekChar = peek(source)
+        if (peekChar.get == '&') {
+          currChar = None
+          new Token(AND).setPos(f, pos)
+        } else {
+          currChar = peekChar
+          new Token(BITWISEAND).setPos(f, pos)
+        }
+      }
+      case '|' => {
+        peekChar = peek(source)
+        if (peekChar.get == '|') {
+          currChar = None
+          new Token(OR).setPos(f, pos)
+        } else {
+          currChar = peekChar
+          new Token(BITWISEOR).setPos(f, pos)
+        }
+      }
+      case '\"' => {
+        var strBuff = new StringBuffer
+        peekChar = peek(source)
+        while (peekChar.get != '\"') {
+          strBuff.append(peekChar.get)
+          peekChar = Some(source.next)
+        }
+        currChar = peekChar
+        // pointing to final double quote, so need to progress one
+        new STRLIT(strBuff.toString).setPos(f, pos)
+      }
+
+      // div and comment line and comment block
+      case '/' => {
+        peekChar = peek(source)
+        if (peekChar.get == '/') {
+
+          val tk = new Token(CMT).setPos(f, pos)
+          // skip the line
+          while (peekChar.get != '\n') {
+            peekChar = peek(source)
+          }
+          currChar = None
+          // found \n so move to the next
+          tk
+        }
+        else if (peekChar.get == '*') {
+          val tk = new Token(CMT).setPos(f, pos)
+          var firChar = source.next
+          var secChar = source.next
+
+          while (firChar != '*' || secChar != '/') {
+            firChar = secChar
+            secChar = source.next
+          }
+          currChar = None;
+          tk
+        } else {
+          currChar = peekChar
+          new Token(DIV).setPos(f, pos)
+        }
+      } // end of case /
+    } // end of matchSymbol
+  } // end of matchChar function
+
+  private def peek(s: Source): Option[Char] = {
+    var peekChar: Option[Char] = None
+    if (s.hasNext) {
+      peekChar = Some(s.next)
+    }
+    peekChar
+  }
+
   // TODO Add the tokens we need to evaluate
   private def getStringToken(string: String): Token = string match {
-
     case "class" => new Token(CLASS)
     case "method" => new Token(METHOD)
     case "var" => new Token(VAR)
@@ -142,186 +268,7 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
     case "strOf" => new Token(STROF)
     case _ => new ID(string)
   }
-
-  private def matchChar(source: Source, f: File, nc: Char, p: Int): Token = {
-
-    var nextChar = nc
-    var pos = p
-
-    nextChar match {
-      case '(' => {
-        pos = source.pos
-        new Token(LPAREN).setPos(f, pos)
-      }
-      case ')' => {
-        pos = source.pos
-        new Token(RPAREN).setPos(f, pos)
-      }
-      case '+' => {
-        pos = source.pos
-        new Token(PLUS).setPos(f, pos)
-      }
-      // DIV is not that simple due to comments
-      // TODO Add comment functionality
-      case '/' => {
-        nextChar = source.next;
-        pos = source.pos
-
-        if (nextChar == '/') {
-
-          val tk = new Token(CMT).setPos(f, pos)
-          // skip the line
-          while (nextChar != '\n') {
-            nextChar = source.next;
-            pos = source.pos
-          }
-          // found \n so move to the next
-          nextChar = source.next;
-          pos = source.pos
-          tk
-        }
-        else if (nextChar == '*') {
-          val tk = new Token(CMT).setPos(f, pos)
-          var firChar = source.next
-          var secChar = source.next
-
-          while (firChar != '*' || secChar != '/') {
-            firChar = secChar
-            secChar = source.next
-          }
-          nextChar = source.next;
-          pos = source.pos
-          tk
-        } else {
-          new Token(DIV).setPos(f, pos)
-        }
-      }
-      case '*' => {
-        nextChar = source.next;
-        pos = source.pos
-        new Token(TIMES).setPos(f, pos)
-      }
-      case '=' => {
-        nextChar = source.next;
-        pos = source.pos
-        if (nextChar == '=') {
-          nextChar = source.next;
-          pos = source.pos
-          new Token(EQUALS).setPos(f, pos)
-        } else {
-          new Token(EQSIGN).setPos(f, pos)
-        }
-      }
-      case '<' => {
-        nextChar = source.next;
-        pos = source.pos
-        if (nextChar == '=') {
-          nextChar = source.next;
-          pos = source.pos
-          new Token(LESSTHANEQUALS).setPos(f, pos)
-        } else {
-          new Token(LESSTHAN).setPos(f, pos)
-        }
-      }
-      case '>' => {
-        nextChar = source.next;
-        pos = source.pos
-        if (nextChar == '=') {
-          nextChar = source.next;
-          pos = source.pos
-          new Token(GREATERTHANEQUALS).setPos(f, pos)
-        } else {
-          new Token(GREATERTHAN).setPos(f, pos)
-        }
-      }
-      case ':' => {
-        nextChar = source.next
-        pos = source.pos
-        new Token(COLON).setPos(f, pos)
-      }
-      case ';' => {
-        nextChar = source.next
-        pos = source.pos
-        new Token(SEMICOLON).setPos(f, pos)
-      }
-      case '.' => {
-        nextChar = source.next
-        pos = source.pos
-        new Token(DOT).setPos(f, pos)
-      }
-      case ',' => {
-        nextChar = source.next
-        pos = source.pos
-        new Token(COMMA).setPos(f, pos)
-      }
-      case '!' => {
-        nextChar = source.next
-        pos = source.pos
-        new Token(BANG).setPos(f, pos)
-      }
-      case '[' => {
-        nextChar = source.next
-        pos = source.pos
-        new Token(LBRACKET).setPos(f, pos)
-      }
-      case ']' => {
-        nextChar = source.next
-        pos = source.pos
-        new Token(RBRACKET).setPos(f, pos)
-      }
-      case '{' => {
-        nextChar = source.next
-        pos = source.pos
-        new Token(LBRACE).setPos(f, pos)
-      }
-      case '}' => {
-        if (source.hasNext) {
-          nextChar = source.next
-          pos = source.pos
-        }
-        new Token(RBRACE).setPos(f, pos)
-      }
-      case '&' => {
-        nextChar = source.next
-        pos = source.pos
-        if (nextChar == '&') {
-          nextChar = source.next;
-          pos = source.pos
-          new Token(AND).setPos(f, pos)
-        } else {
-          new Token(BITWISEAND).setPos(f, pos)
-        }
-      }
-      case '|' => {
-        nextChar = source.next
-        pos = source.pos
-        if (nextChar == '|') {
-          nextChar = source.next;
-          pos = source.pos
-          new Token(OR).setPos(f, pos)
-        } else {
-          new Token(BITWISEOR).setPos(f, pos)
-        }
-      }
-      case '\"' => {
-        nextChar = source.next
-        pos = source.pos
-        var strBuff = new StringBuffer
-        while (nextChar != '\"') {
-          strBuff.append(nextChar)
-          nextChar = source.next
-        }
-        // pointing to final double quote, so need to progress one
-        nextChar = source.next
-        pos = source.pos
-        new STRLIT(strBuff.toString).setPos(f, pos)
-      }
-    } // end of match
-  } // end of matchChar function
-
 } // end of object Lexer
-
-
 
 object DisplayTokens extends Pipeline[Iterator[Token], Iterator[Token]] {
   def run(ctx: Context)(tokens: Iterator[Token]): Iterator[Token] = {
