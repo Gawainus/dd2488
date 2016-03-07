@@ -25,7 +25,7 @@ object Tokens {
 
   // This allows you to do:
   // myToken match {
-  //   case Kinded(IDKIND) => 
+  //   case Kinded(IDKIND) =>
   //  ...
   // }
   object Kinded {
@@ -75,6 +75,15 @@ object Tokens {
   case object PRINTLN extends TokenKind     // println
   case object STROF extends TokenKind       // strOf
 
+  // added Tokens
+  case object LESSTHANEQUALS extends TokenKind // <=
+  case object GREATERTHAN extends TokenKind // >
+  case object GREATERTHANEQUALS extends TokenKind // >=
+  case object CMT extends TokenKind // /*, */ or //
+  case object BITWISEAND extends TokenKind // &
+  case object BITWISEOR extends TokenKind // |
+  case object RETURN extends TokenKind // return
+
   // Identifiers
   class ID(val value: String) extends Token(IDKIND) {
     override def toString = "ID("+value+")"
@@ -89,4 +98,4 @@ object Tokens {
   class STRLIT(val value: String) extends Token(STRLITKIND) {
     override def toString = "STR("+value+")"
   }
-}
+} // end of object Tokens
