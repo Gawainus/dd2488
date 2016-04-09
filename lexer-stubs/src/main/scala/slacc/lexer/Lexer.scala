@@ -9,17 +9,17 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
 
   import Tokens._
 
-  def run(ctx: Context)(f: File): Iterator[Token] = {
+  var currChar: Option[Char] = None // the actual char that the lexer is at
+  var peekChar: Option[Char] = None // used to peek next char
+  var pos: Int = 0
 
+  def run(ctx: Context)(f: File): Iterator[Token] = {
     import ctx.reporter._
 
     val source = Source.fromFile(f)
-    val keywords: Map [String,Token] = Map()
-
     var eof: Boolean = false
-    var currChar: Option[Char] = None
-    var peekChar: Option[Char] = None // used to peek next char
-    var pos = source.pos
+
+    pos = source.pos
 
     // Complete this file
     new Iterator[Token] {
@@ -39,108 +39,91 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
 
       def next = {
         if (eof) {
-          val token = new Token(EOF)
-          token.setPos(f, pos+1)
-          token
+          pos = source.pos
+          new Token(EOF).setPos(f, pos)
         }
         else {
           if (currChar.isEmpty) {
             currChar = Some(source.next)
           }
-
           // try to skip white space and empty lines first
-          while((currChar.get.isWhitespace || currChar.get == '\n') && source.hasNext) {
-            currChar = Some(source.next)
-            // println("currChar is ("+currChar.get+")")
+          while((currChar.get.isWhitespace || currChar.get == '\n') && !eof) {
+            if (source.hasNext) {
+              currChar = Some(source.next)
+            } else {
+              eof = true
+            }
           }
 
           pos = source.pos
-          /*
-            read a char can be
-            IDENTIFIER
-          */
-          if (currChar.get.isLetter) {
-            var strBuff = new StringBuffer
-            strBuff.append(currChar.get)
-
-            if (hasNext) {
-              peekChar = Some(source.next)
-            }
-
-            // apply longest match rule
-            while (!peekChar.isEmpty  && !peekChar.get.isSpaceChar &&
-              (peekChar.get.isLetter||
-                peekChar.get.isDigit||
-                peekChar.get == '_')
-              )
-            {
-              currChar = peekChar
-              strBuff.append(currChar.get)
-              if (hasNext) {
-                peekChar = Some(source.next)
-              }
-              else {
-                peekChar = None
-              }
-            }
-
-            currChar = peekChar
-
-            val collectedStr = strBuff.toString
-            val token = getStringToken(collectedStr)
-            token.setPos(f, pos)
-            token
-          }
-          else if (currChar.get.isDigit) {
-            // digits
-            var num = 0
-            while (currChar.get.isDigit) {
-              num = 10*num + currChar.get.asDigit
-              currChar = Some(source.next)
-            }
-            new INTLIT(num).setPos(f, pos)
-          }
-          else if (!currChar.get.isWhitespace) {
-            // symbol
-            // println("curr symbol is ("+currChar.get+")")
-            val matchedToken = matchSymbol(source, f, currChar, pos)
-            if (source.hasNext) {
-              currChar = Some(source.next)
-            }
-            else {
-              currChar = None
-            }
-            matchedToken
-          }
-          else { // only thing left is the bad things
-            println("(" + currChar.get + ") made it bad.")
-            new Token(BAD)
+          if (eof) {
+            new Token(EOF).setPos(f, pos)
+          } else {
+            matchInitialChar(source, f)
           }
         }
       } // end of next method of iterator
     } // end of Iterator[Token]
   } // end of run
 
-  private def matchSymbol(source: Source, f: File, cc: Option[Char], p: Int): Token = {
+  private def matchInitialChar(source: Source, f: File): Token = {
+    if (currChar.get.isLetter) {
+      var strBuff = new StringBuffer
+      strBuff.append(currChar.get)
 
-    var peekChar: Option[Char] = None
-    var currChar = cc
-    var pos = p
+      if (source.hasNext) {
+        peekChar = Some(source.next)
+      }
 
-    currChar.get match {
-      case '(' => new Token(LPAREN).setPos(f, pos)
-      case ')' => new Token(RPAREN).setPos(f, pos)
-      case '+' => new Token(PLUS).setPos(f, pos)
-      case '*' => new Token(TIMES).setPos(f, pos)
-      case ':' => new Token(COLON).setPos(f, pos)
-      case ';' => new Token(SEMICOLON).setPos(f, pos)
-      case '.' => new Token(DOT).setPos(f, pos)
-      case ',' => new Token(COMMA).setPos(f, pos)
-      case '!' => new Token(BANG).setPos(f, pos)
-      case '[' => new Token(LBRACKET).setPos(f, pos)
-      case ']' => new Token(RBRACKET).setPos(f, pos)
-      case '{' => new Token(LBRACE).setPos(f, pos)
-      case '}' => new Token(RBRACE).setPos(f, pos)
+      // apply longest match rule
+      while (
+        !peekChar.isEmpty
+        &&
+        !peekChar.get.isSpaceChar
+        &&
+        (peekChar.get.isLetter || peekChar.get.isDigit|| peekChar.get == '_')
+        )
+      {
+        strBuff.append(peekChar.get)
+        if (source.hasNext) {
+          peekChar = Some(source.next)
+        }
+        else {
+          peekChar = None
+        }
+      }
+
+      currChar = peekChar
+
+      val collectedStr = strBuff.toString
+      val token = getStringToken(collectedStr)
+      token.setPos(f, pos)
+      token
+    } // end of case letter
+    else if (currChar.get.isDigit) {
+      // digits
+      var num = 0
+      while (currChar.get.isDigit) {
+        num = 10*num + currChar.get.asDigit
+        currChar = Some(source.next)
+      }
+      new INTLIT(num).setPos(f, pos)
+    } // end of case digit
+    else if (!currChar.get.isWhitespace) {
+      matchSymbol(source, f)
+    } // end of case whitespace
+    else { // only thing left is the bad things
+      println("char \'" + currChar.get + "\' makes it bad.")
+        new Token(BAD).setPos(f,pos)
+    }
+  }
+
+  private def matchSymbol(source: Source, f: File): Token = {
+    val cc = currChar.get
+    cc match {
+      case '(' | ')' | '+' | '*' | ':' | ';' | '.' | ','| '!' | '[' | ']' | '{' |'}' => {
+        resetCurrCharAndReturnToken(cc, f)
+      }
 
       case '=' => {
         peekChar = peek(source)
@@ -194,12 +177,13 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
       }
       case '\"' => {
         var strBuff = new StringBuffer
+
         peekChar = peek(source)
         while (peekChar.get != '\"') {
           strBuff.append(peekChar.get)
           peekChar = Some(source.next)
         }
-        currChar = peekChar
+        currChar = None
         // pointing to final double quote, so need to progress one
         new STRLIT(strBuff.toString).setPos(f, pos)
       }
@@ -233,9 +217,31 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
           currChar = peekChar
           new Token(DIV).setPos(f, pos)
         }
-      } // end of case /
+      }
+      case _ => new Token(BAD).setPos(f,pos)
     } // end of matchSymbol
   } // end of matchChar function
+
+  private def resetCurrCharAndReturnToken(c: Char, f: File): Token = {
+    currChar = None
+
+    c match {
+      case '(' => new Token(LPAREN).setPos(f, pos)
+      case ')' => new Token(RPAREN).setPos(f, pos)
+      case '+' => new Token(PLUS).setPos(f, pos)
+      case '*' => new Token(TIMES).setPos(f, pos)
+      case ':' => new Token(COLON).setPos(f, pos)
+      case ';' => new Token(SEMICOLON).setPos(f, pos)
+      case '.' => new Token(DOT).setPos(f, pos)
+      case ',' => new Token(COMMA).setPos(f, pos)
+      case '!' => new Token(BANG).setPos(f, pos)
+      case '[' => new Token(LBRACKET).setPos(f, pos)
+      case ']' => new Token(RBRACKET).setPos(f, pos)
+      case '{' => new Token(LBRACE).setPos(f, pos)
+      case '}' => new Token(RBRACE).setPos(f, pos)
+      case _ => new Token(BAD).setPos(f,pos)
+    }
+  }
 
   private def peek(s: Source): Option[Char] = {
     var peekChar: Option[Char] = None
@@ -245,16 +251,15 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
     peekChar
   }
 
-  // TODO Add the tokens we need to evaluate
   private def getStringToken(string: String): Token = string match {
     case "class" => new Token(CLASS)
     case "method" => new Token(METHOD)
     case "var" => new Token(VAR)
-    case "unit" => new Token(UNIT)
-    case "string" => new Token(STRING)
+    case "Unit" => new Token(UNIT)
+    case "String" => new Token(STRING)
     case "extends" => new Token(EXTENDS)
-    case "int" => new Token(INT)
-    case "boolean" => new Token(BOOLEAN)
+    case "Int" => new Token(INT)
+    case "Boolean" => new Token(BOOLEAN)
     case "while" => new Token(WHILE)
     case "if" => new Token(IF)
     case "else" => new Token(ELSE)

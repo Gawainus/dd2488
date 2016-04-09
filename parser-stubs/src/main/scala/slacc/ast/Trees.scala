@@ -11,10 +11,14 @@ object Trees {
     val id = Identifier("Main")
     def exprs: List[ExprTree] = main.exprs ::: (main.retExpr :: Nil)
   }
-  case class ClassDecl(id: Identifier, parent: Option[Identifier], vars: List[VarDecl], methods: List[MethodDecl]) extends Tree
+  case class ClassDecl(id: Identifier, parent: Option[Identifier],
+    vars: List[VarDecl], methods: List[MethodDecl]) extends Tree
   case class VarDecl(tpe: TypeTree, id: Identifier) extends Tree
-  case class MethodDecl(retType: TypeTree, id: Identifier, args: List[Formal], vars: List[VarDecl], exprs: List[ExprTree], retExpr: ExprTree) extends Tree {
+  case class MethodDecl(retType: TypeTree, id: Identifier, args: List[Formal],
+    vars: List[VarDecl], exprs: List[ExprTree], retExpr: ExprTree)
+    extends Tree {
   }
+
   sealed case class Formal(tpe: TypeTree, id: Identifier) extends Tree
 
   sealed trait TypeTree extends Tree
@@ -35,7 +39,8 @@ object Trees {
   case class Equals(lhs: ExprTree, rhs: ExprTree) extends ExprTree
   case class ArrayRead(arr: ExprTree, index: ExprTree) extends ExprTree
   case class ArrayLength(arr: ExprTree) extends ExprTree
-  case class MethodCall(obj: ExprTree, meth: Identifier, args: List[ExprTree]) extends ExprTree
+  case class MethodCall(obj: ExprTree, meth: Identifier,
+    args: List[ExprTree]) extends ExprTree
   case class IntLit(value: Int) extends ExprTree
   case class StringLit(value: String) extends ExprTree
 
@@ -48,10 +53,12 @@ object Trees {
   case class Not(expr: ExprTree) extends ExprTree
 
   case class Block(exprs: List[ExprTree]) extends ExprTree
-  case class If(expr: ExprTree, thn: ExprTree, els: Option[ExprTree]) extends ExprTree
+  case class If(expr: ExprTree, thn: ExprTree,
+    els: Option[ExprTree]) extends ExprTree
   case class While(cond: ExprTree, body: ExprTree) extends ExprTree
   case class Println(expr: ExprTree) extends ExprTree
   case class Assign(id: Identifier, expr: ExprTree) extends ExprTree
-  case class ArrayAssign(id: Identifier, index: ExprTree, expr: ExprTree) extends ExprTree
+  case class ArrayAssign(id: Identifier, index: ExprTree,
+    expr: ExprTree) extends ExprTree
   case class Strof(expr: ExprTree) extends ExprTree
 }

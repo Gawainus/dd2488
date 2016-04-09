@@ -15,6 +15,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
 
     def readToken: Unit = {
       if (tokens.hasNext) {
+
         // uses nextToken from the Lexer trait
         currentToken = tokens.next
 
@@ -34,18 +35,48 @@ object Parser extends Pipeline[Iterator[Token], Program] {
       }
     }
 
-    /** Complains that what was found was not expected. The method accepts arbitrarily many arguments of type TokenKind */
+    /** Complains that what was found was not expected.
+    The method accepts arbitrarily many arguments of type TokenKind */
     def expected(kind: TokenKind, more: TokenKind*): Nothing = {
-      fatal("expected: " + (kind::more.toList).mkString(" or ") + ", found: " + currentToken, currentToken)
+      fatal("expected: " + (kind::more.toList).mkString(" or ") +
+        ", found: " + currentToken, currentToken)
     }
 
-    def parseGoal: Program = {
-      ???
+    def parseExprTree(): ExprTree {
+
     }
+
+    def parseFormal(): TypeTree {
+
+    }
+
+    def parseClass(): ClassDecl {
+
+    }
+
+    def parseMethod(): MethodDecl {
+
+    }
+
+    def parseGoal(): Program = {
+      while (currentToken == CLASS) {
+        parseClass()
+        readToken
+      }
+      if (currentToken == METHOD) {
+        parseMethod()
+      }
+      else {
+        // Errors
+        ctx.reporter.fatal("There should be exactly one MainMethod declared
+          after class declarations.")
+      }
+    }
+
 
     readToken
     val tree = parseGoal
     terminateIfErrors
     tree
-  }
-}
+  } // end of run
+} // end of object parser

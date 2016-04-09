@@ -83,7 +83,9 @@ object Main {
       val ast = pipeline.run(ctx)(ctx.files.head)
       println(ast)
     } else {
-      ???
+      // TODO: find out what to do
+      val pipeline = Lexer andThen Parser
+      val ast = pipeline.run(ctx)(ctx.files.head)
     }
   }
 }
