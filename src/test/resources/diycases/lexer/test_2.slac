@@ -1,0 +1,17 @@
+
+method main (): Int= {
+var aux01 : Int;
+var aux02:Int;
+
+
+  while(1==5) {
+
+    if (2==3) {
+
+    asdf[2]=5
+    array.get(3)
+    }
+
+  }
+
+}

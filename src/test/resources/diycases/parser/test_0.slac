@@ -1,0 +1,9 @@
+
+
+method sample_1(var1: Int, var2 : Int[ ], var3 :Kitten): Cat = {
+  var x1: Int;
+  var x2: Int[];
+
+  false;
+  true = false
+}

@@ -1,0 +1,21 @@
+
+class c1 {
+
+}
+
+method sample_1(var1: Int, var2 :String): Int = {
+  var aux01 : Int;
+  /*
+  var bool1 : Bool;
+  123;
+  var;
+  "";
+  "Lah Lah";
+
+  //
+  123/456
+  */
+  0;
+  new shit();
+  3+2*(5+3)/4
+}
