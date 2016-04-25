@@ -1,15 +1,14 @@
 package slacc
 package tests
 
-import org.scalatest.FlatSpec
-import lexer._
-import ast._
-import utils._
-import scala.io.Source
+import java.io.{File, FileWriter}
 
-import java.io.File
-import java.io.FileWriter
-import java.io.IOException
+import org.scalatest.FlatSpec
+import slacc.ast._
+import slacc.lexer._
+import slacc.utils._
+
+import scala.io.Source
 
 class TestBed extends FlatSpec {
   def processOptions(args: Array[String]): Context = {

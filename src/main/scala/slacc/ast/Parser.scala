@@ -7,6 +7,9 @@ import lexer._
 import lexer.Tokens._
 
 object Parser extends Pipeline[Iterator[Token], Program] {
+  val firstOfFactor = List[TokenKind](TIMES, DIV)
+  val firstOfTerm = List[TokenKind](PLUS, MINUS)
+
   def run(ctx: Context)(tokens: Iterator[Token]): Program = {
     import ctx.reporter._
 
@@ -37,7 +40,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
     }
 
     /** Complains that what was found was not expected.
-    The method accepts arbitrarily many arguments of type TokenKind */
+      * The method accepts arbitrarily many arguments of type TokenKind */
     def expected(kind: TokenKind, more: TokenKind*): Nothing = {
       fatal("expected: " + (kind::more.toList).mkString(" or ") +
         ", found: " + currentToken, currentToken)
@@ -91,8 +94,6 @@ object Parser extends Pipeline[Iterator[Token], Program] {
         expected(IDKIND)
       }
     }
-
-
 
     def parseMethodReturnType(): TypeTree = {
       eat(RPAREN)
@@ -168,14 +169,17 @@ object Parser extends Pipeline[Iterator[Token], Program] {
             }
           }
           case BOOLEAN => {
+            readToken
             eat(SEMICOLON)
             new VarDecl(BooleanType(), Identifier(id))
           }
           case STRING => {
+            readToken
             eat(SEMICOLON)
             new VarDecl(StringType(), Identifier(id))
           }
           case UNIT => {
+            readToken
             eat(SEMICOLON)
             new VarDecl(UnitType(), Identifier(id))
           }
@@ -183,6 +187,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
             if (currentToken.kind == IDKIND) {
               val userDefinedVar = new VarDecl(UserDefinedType(Identifier(currentToken.asInstanceOf[ID].value)),
                 Identifier(id))
+              readToken
               eat(SEMICOLON)
               userDefinedVar
             }
@@ -197,9 +202,160 @@ object Parser extends Pipeline[Iterator[Token], Program] {
       }
     }
 
-    def parseExprTree(): ExprTree = {
-
+    // math part
+    def parseFactor(): ExprTree = {
       currentToken.kind match {
+        case IDKIND => {
+          val idStr = currentToken.asInstanceOf[ID].value
+          readToken
+          Identifier(idStr)
+        }
+        case INTLITKIND => {
+          val intValue = currentToken.asInstanceOf[INTLIT].value
+          readToken
+          new IntLit(intValue)
+        }
+        case LPAREN => {
+          parseParenExprTree
+        }
+        case _ => {
+          val firstExpr = parseExprTree()
+          currentToken.kind match {
+            case LBRACKET => {
+              readToken
+              val index = parseExprTree
+              ArrayRead(firstExpr, index)
+            }
+            case DOT => {
+              readToken
+              currentToken.kind match {
+                case LENGTH => {
+                  ArrayLength(firstExpr)
+                }
+                case IDKIND => {
+                  val idStr = currentToken.asInstanceOf[ID].value
+                  val params = parseParams
+                  MethodCall(firstExpr, Identifier(idStr), params)
+                }
+                case _ => {
+                  fatal("Not a valid DOT operation")
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    def parseFactorList(firstExpr: ExprTree): ExprTree = {
+      var currFactor = firstExpr
+      while (currentToken.kind == TIMES | currentToken.kind == DIV) {
+        currentToken.kind match {
+          case TIMES => {
+            readToken
+            currFactor = Times(currFactor, parseFactor)
+          }
+          case _ => {
+            readToken
+            currFactor = Div(currFactor, parseFactor)
+          }
+        }
+      }
+      currFactor
+    }
+
+    def parseTerm(lhs: ExprTree): ExprTree = {
+      currentToken.kind match {
+        case PLUS => {
+          readToken
+          val firstExpr = parseFactor()
+          val rhs = parseFactorList(firstExpr)
+          Plus(lhs, rhs)
+        }
+
+        case MINUS => {
+          readToken
+          val firstExpr = parseFactor()
+          val rhs = parseFactorList(firstExpr)
+          Minus(lhs, rhs)
+        }
+
+        case _ => {
+          fatal("Not a valid term.")
+        }
+      }
+    }
+
+    def parseTermList(firstExpr: ExprTree): ExprTree = {
+      var currTerm = parseFactorList(firstExpr)
+      while (currentToken.kind == PLUS | currentToken.kind == MINUS) {
+        currTerm = parseTerm(currTerm)
+      }
+      currTerm
+    }
+
+    def parseParenExprTree(): ExprTree = {
+      eat(LPAREN)
+      val expr = parseExprTree
+      eat(RPAREN)
+      expr
+    }
+
+    def parseRecursiveExprTree(firstExpr: ExprTree): ExprTree = {
+      currentToken.kind match {
+        case AND => {
+          readToken
+          val rhs = parseExprTree
+          And(firstExpr, rhs)
+        }
+        case OR => {
+          readToken
+          val rhs = parseExprTree
+          Or(firstExpr, rhs)
+        }
+        case EQUALS => {
+          readToken
+          val rhs = parseExprTree
+          Equals(firstExpr, rhs)
+        }
+        case LESSTHAN => {
+          readToken
+          val rhs = parseExprTree
+          LessThan(firstExpr, rhs)
+        }
+        case PLUS | MINUS | TIMES | DIV => {
+          parseTermList(firstExpr)
+        }
+        case LBRACKET => {
+          readToken
+          val index = parseExprTree
+          ArrayRead(firstExpr, index)
+        }
+        case DOT => {
+          readToken
+          currentToken.kind match {
+            case LENGTH => {
+              ArrayLength(firstExpr)
+            }
+            case IDKIND => {
+              val idStr = currentToken.asInstanceOf[ID].value
+              val params = parseParams
+              MethodCall(firstExpr, Identifier(idStr), params)
+            }
+            case _ => {
+              fatal("Not a valid DOT operation")
+            }
+          }
+        }
+        case _ => {
+          fatal("Invalid recursive statement.")
+        }
+      }
+    }
+
+    def parseExprTree(): ExprTree = {
+      currentToken.kind match {
+        // terminals
         case TRUE => {
           readToken
           True()
@@ -208,8 +364,161 @@ object Parser extends Pipeline[Iterator[Token], Program] {
           readToken
           False()
         }
+        case INTLITKIND => {
+          val intValue = currentToken.asInstanceOf[INTLIT].value
+          readToken
+          new IntLit(intValue)
+        }
+        case STRLITKIND => {
+          val strValue = currentToken.asInstanceOf[STRLIT].value
+          readToken
+          new StringLit(strValue)
+        }
+        case IDKIND => {
+          val idStr = currentToken.asInstanceOf[ID].value
+          val identifier = Identifier(idStr)
+          readToken
+          currentToken.kind match {
+            case EQSIGN => {
+              readToken
+              val expr = parseExprTree
+              Assign(identifier, expr)
+            }
+            case LBRACKET => {
+              readToken
+              val index = parseExprTree
+              eat(RBRACKET)
+              eat(EQSIGN)
+              val expr = parseExprTree
+              ArrayAssign(identifier, index, expr)
+            }
+            case _ => {
+             fatal("Invalid Expr with IDKIND.")
+            }
+          }
+        }
+        case SELF => {
+          new Self()
+        }
+
+        // non recursive start
+        case NEW => {
+          readToken
+          currentToken.kind match {
+            case INT => {
+              readToken
+              eat(LBRACKET)
+              val size = parseExprTree
+              eat(RBRACKET)
+              NewIntArray(size)
+            }
+            case IDKIND => {
+              val idStr = currentToken.asInstanceOf[ID].value
+              eat(LPAREN)
+              eat(RPAREN)
+              New(Identifier(idStr))
+            }
+            case _ => {
+              fatal("Not valid New statement.")
+            }
+          }
+        }
+
+        case BANG => {
+          readToken
+          Not(parseExprTree)
+        }
+        case LPAREN => {
+          val expr = parseParenExprTree
+          expr
+        }
+        case LBRACE => {
+          readToken
+          val exprList = parseBlock
+          eat(RBRACE)
+          Block(exprList)
+        }
+        case IF => {
+          readToken
+          val predicate = parseParenExprTree
+          val ifExprList = parseExprTree
+          readToken
+          var elseExprList = None: Option[ExprTree]
+          if (currentToken.kind == ELSE) {
+            readToken
+            elseExprList = Some(parseExprTree)
+          }
+          If(predicate, ifExprList, elseExprList)
+        }
+        case WHILE => {
+          readToken
+          val predicate = parseParenExprTree
+          val body = parseParenExprTree
+          While(predicate, body)
+        }
+        case PRINTLN => {
+          val expr = parseParenExprTree
+          Println(expr)
+        }
+        case STROF => {
+          val expr = parseParenExprTree
+          Strof(expr)
+        }
+
+        // recursive start
         case _ => {
-          fatal("Unknow Expressions.")
+          currentToken.kind match {
+            case AND | OR | EQUALS | LESSTHAN | PLUS | MINUS | TIMES | DIV => {
+              parseRecursiveExprTree(identifier)
+            }
+            case _ => {
+              identifier
+            }
+          }
+        }
+      }
+    }
+
+    def parseParams: List[ExprTree] = {
+      eat(LPAREN)
+      var exprList = List[ExprTree]()
+      currentToken.kind match {
+        case RBRACE => {
+          readToken
+          exprList
+        }
+        case _ => {
+          exprList :+= parseExprTree
+          readToken
+          while(currentToken.kind == COMMA) {
+            readToken
+            exprList :+= parseExprTree
+            readToken
+          }
+          eat(RPAREN)
+          exprList
+        }
+      }
+    }
+
+    // a block is a list of exprs
+    def parseBlock(): List[ExprTree] = {
+      var exprList = List[ExprTree]()
+
+      readToken
+      currentToken.kind match {
+        case RBRACE => {
+          eat(RBRACE)
+          exprList
+        }
+        case _ => {
+          exprList :+= parseExprTree
+          while(currentToken.kind == SEMICOLON) {
+            readToken
+            exprList :+= parseExprTree
+          }
+          eat(RBRACE)
+          exprList
         }
       }
     }
@@ -221,16 +530,8 @@ object Parser extends Pipeline[Iterator[Token], Program] {
       while (currentToken.kind == VAR) {
         varList :+= parseVarDecl
       }
-
-      var exprList = List[ExprTree]()
-      exprList :+= parseExprTree
-      while(currentToken.kind == SEMICOLON) {
-        readToken
-        exprList :+= parseExprTree
-      }
-
-
-      eat(RBRACE)
+      val exprFirst = parseExprTree
+      val exprList = exprFirst::parseBlock
       (varList, exprList, True())
     }
 

@@ -28,7 +28,7 @@ object Symbols {
 
     def next: Int = {
       val ret = c
-      c = c + 1
+      c += 1
       ret
     }
   }
@@ -37,7 +37,11 @@ object Symbols {
     var mainClass: ClassSymbol = _
     var classes = Map[String, ClassSymbol]()
 
-    def lookupClass(n: String): Option[ClassSymbol] = ???
+    def lookupClass(n: String): Option[ClassSymbol] = {
+      // ToDo: Implement
+
+      None: Option[ClassSymbol]
+    }
   }
 
   class ClassSymbol(val name: String) extends Symbol {
@@ -45,8 +49,17 @@ object Symbols {
     var methods = Map[String, MethodSymbol]()
     var members = Map[String, VariableSymbol]()
 
-    def lookupMethod(n: String): Option[MethodSymbol] = ???
-    def lookupVar(n: String): Option[VariableSymbol] = ???
+    def lookupMethod(n: String): Option[MethodSymbol] = {
+      // ToDo: Implement
+
+      None: Option[MethodSymbol]
+
+    }
+    def lookupVar(n: String): Option[VariableSymbol] = {
+      // ToDo: Implement
+
+      None: Option[VariableSymbol]
+    }
   }
 
   class MethodSymbol(val name: String, val classSymbol: ClassSymbol) extends Symbol {
@@ -55,7 +68,11 @@ object Symbols {
     var argList: List[VariableSymbol] = Nil
     var overridden: Option[MethodSymbol] = None
 
-    def lookupVar(n: String): Option[VariableSymbol] = ???
+    def lookupVar(n: String): Option[VariableSymbol] = {
+      // ToDo: Implement
+
+      None: Option[VariableSymbol]
+    }
   }
 
   class VariableSymbol(val name: String) extends Symbol

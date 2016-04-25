@@ -1,9 +1,11 @@
 package slacc
 package lexer
 
-import utils._
-import scala.io.Source
 import java.io.File
+
+import slacc.utils._
+
+import scala.io.Source
 
 object Lexer extends Pipeline[File, Iterator[Token]] {
 
@@ -14,7 +16,6 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
   var pos: Int = 0
 
   def run(ctx: Context)(f: File): Iterator[Token] = {
-    import ctx.reporter._
 
     val source = Source.fromFile(f)
     var eof: Boolean = false
@@ -259,7 +260,7 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
     case "String" => new Token(STRING)
     case "extends" => new Token(EXTENDS)
     case "Int" => new Token(INT)
-    case "Boolean" => new Token(BOOLEAN)
+    case "Bool" => new Token(BOOLEAN)
     case "while" => new Token(WHILE)
     case "if" => new Token(IF)
     case "else" => new Token(ELSE)

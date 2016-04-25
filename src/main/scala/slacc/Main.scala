@@ -22,12 +22,16 @@ object Main {
         ctx = ctx.copy(doTokens = true)
         processOption(args)
 
+      case "--ast" :: args =>
+        ctx = ctx.copy(doAST = true)
+        processOption(args)
+
       case "--print" :: args =>
         ctx = ctx.copy(doPrintMain = true)
         processOption(args)
 
-      case "--ast" :: args =>
-        ctx = ctx.copy(doAST = true)
+      case "--symid" :: args =>
+        ctx = ctx.copy(doSymbolIds = true)
         processOption(args)
 
       case "-d" :: out :: args =>
@@ -60,8 +64,9 @@ object Main {
     println("Options include:")
     println(" --help        displays this help")
     println(" --tokens      displays the list of tokens")
-    println(" --print       pretty-prints the program")
     println(" --ast         displays the AST")
+    println(" --print       pretty-prints the program")
+    println("--symid        pretty-prints the program with Name Analysis")
     println(" -d <outdir>   generates class files in the specified directory")
   }
 
@@ -74,15 +79,23 @@ object Main {
         val n = iter.next()
         println(n+"("+n.line+":"+n.col+")")
       }
-    } else if (ctx.doPrintMain) {
-      val pipeline = Lexer andThen Parser
-      val ast = pipeline.run(ctx)(ctx.files.head)
-      println(Printer(ast))
-    } else if (ctx.doAST) {
+    }
+    else if (ctx.doAST) {
       val pipeline = Lexer andThen Parser
       val ast = pipeline.run(ctx)(ctx.files.head)
       println(ast)
-    } else {
+    }
+    else if (ctx.doPrintMain) {
+      val pipeline = Lexer andThen Parser
+      val ast = pipeline.run(ctx)(ctx.files.head)
+      println(Printer(ast))
+    }
+    else if (ctx.doSymbolIds) {
+      val pipeline = Lexer andThen Parser
+      val ast = pipeline.run(ctx)(ctx.files.head)
+      println(Printer(ast))
+    }
+    else {
       // TODO: find out what to do
       val pipeline = Lexer andThen Parser
       val ast = pipeline.run(ctx)(ctx.files.head)
