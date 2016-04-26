@@ -10,6 +10,9 @@ object Parser extends Pipeline[Iterator[Token], Program] {
   val firstOfFactor = List[TokenKind](TIMES, DIV)
   val firstOfTerm = List[TokenKind](PLUS, MINUS)
 
+  val symbolsOfRecursion = List[TokenKind](AND, OR, EQUALS, LESSTHAN, PLUS, MINUS, TIMES, DIV,
+    LBRACKET, DOT)
+
   def run(ctx: Context)(tokens: Iterator[Token]): Program = {
     import ctx.reporter._
 
@@ -306,22 +309,22 @@ object Parser extends Pipeline[Iterator[Token], Program] {
         case AND => {
           readToken
           val rhs = parseExprTree
-          And(firstExpr, rhs)
+          parseRecursiveExprTree(And(firstExpr, rhs))
         }
         case OR => {
           readToken
           val rhs = parseExprTree
-          Or(firstExpr, rhs)
+          parseRecursiveExprTree(Or(firstExpr, rhs))
         }
         case EQUALS => {
           readToken
           val rhs = parseExprTree
-          Equals(firstExpr, rhs)
+          parseRecursiveExprTree(Equals(firstExpr, rhs))
         }
         case LESSTHAN => {
           readToken
           val rhs = parseExprTree
-          LessThan(firstExpr, rhs)
+          parseRecursiveExprTree(LessThan(firstExpr, rhs))
         }
         case PLUS | MINUS | TIMES | DIV => {
           parseTermList(firstExpr)
@@ -329,18 +332,21 @@ object Parser extends Pipeline[Iterator[Token], Program] {
         case LBRACKET => {
           readToken
           val index = parseExprTree
-          ArrayRead(firstExpr, index)
+          eat(RBRACKET)
+          parseRecursiveExprTree(ArrayRead(firstExpr, index))
         }
         case DOT => {
           readToken
           currentToken.kind match {
             case LENGTH => {
-              ArrayLength(firstExpr)
+              readToken
+              parseRecursiveExprTree(ArrayLength(firstExpr))
             }
             case IDKIND => {
               val idStr = currentToken.asInstanceOf[ID].value
+              readToken
               val params = parseParams
-              MethodCall(firstExpr, Identifier(idStr), params)
+              parseRecursiveExprTree(MethodCall(firstExpr, Identifier(idStr), params))
             }
             case _ => {
               fatal("Not a valid DOT operation")
@@ -348,7 +354,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
           }
         }
         case _ => {
-          fatal("Invalid recursive statement.")
+          firstExpr
         }
       }
     }
@@ -358,25 +364,26 @@ object Parser extends Pipeline[Iterator[Token], Program] {
         // terminals
         case TRUE => {
           readToken
-          True()
+          parseRecursiveExprTree(True())
         }
         case FALSE => {
           readToken
-          False()
+          parseRecursiveExprTree(False())
         }
         case INTLITKIND => {
           val intValue = currentToken.asInstanceOf[INTLIT].value
           readToken
-          new IntLit(intValue)
+          parseRecursiveExprTree(IntLit(intValue))
         }
         case STRLITKIND => {
           val strValue = currentToken.asInstanceOf[STRLIT].value
           readToken
-          new StringLit(strValue)
+          parseRecursiveExprTree(StringLit(strValue))
         }
         case IDKIND => {
           val idStr = currentToken.asInstanceOf[ID].value
           val identifier = Identifier(idStr)
+
           readToken
           currentToken.kind match {
             case EQSIGN => {
@@ -393,7 +400,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
               ArrayAssign(identifier, index, expr)
             }
             case _ => {
-             fatal("Invalid Expr with IDKIND.")
+              parseRecursiveExprTree(identifier)
             }
           }
         }
@@ -465,16 +472,8 @@ object Parser extends Pipeline[Iterator[Token], Program] {
           Strof(expr)
         }
 
-        // recursive start
         case _ => {
-          currentToken.kind match {
-            case AND | OR | EQUALS | LESSTHAN | PLUS | MINUS | TIMES | DIV => {
-              parseRecursiveExprTree(identifier)
-            }
-            case _ => {
-              identifier
-            }
-          }
+          fatal("Invalid Expr")
         }
       }
     }
