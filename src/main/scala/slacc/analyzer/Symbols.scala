@@ -1,7 +1,8 @@
 package slacc
 package analyzer
 
-import utils._
+import slacc.analyzer.Types._
+import slacc.utils._
 
 object Symbols {
   trait Symbolic[S <: Symbol] {
@@ -18,7 +19,7 @@ object Symbols {
     }
   }
 
-  sealed abstract class Symbol extends Positioned {
+  sealed abstract class Symbol extends Positioned with Typed {
     val id: Int = ID.next
     val name: String
   }
@@ -28,7 +29,7 @@ object Symbols {
 
     def next: Int = {
       val ret = c
-      c += 1
+      c = c + 1
       ret
     }
   }
@@ -38,11 +39,11 @@ object Symbols {
     var classes = Map[String, ClassSymbol]()
 
     def lookupClass(n: String): Option[ClassSymbol] = {
-      // ToDo: Implement
+      // Todo:
 
-      None: Option[ClassSymbol]
+      None
     }
-  }
+  } // end of class GlobalScope
 
   class ClassSymbol(val name: String) extends Symbol {
     var parent: Option[ClassSymbol] = None
@@ -50,17 +51,16 @@ object Symbols {
     var members = Map[String, VariableSymbol]()
 
     def lookupMethod(n: String): Option[MethodSymbol] = {
-      // ToDo: Implement
+      // ToDo:
 
-      None: Option[MethodSymbol]
-
+      None
     }
     def lookupVar(n: String): Option[VariableSymbol] = {
-      // ToDo: Implement
+      // ToDo:
 
-      None: Option[VariableSymbol]
+      None
     }
-  }
+  } // end of class ClassSymbol
 
   class MethodSymbol(val name: String, val classSymbol: ClassSymbol) extends Symbol {
     var params = Map[String, VariableSymbol]()
@@ -69,11 +69,11 @@ object Symbols {
     var overridden: Option[MethodSymbol] = None
 
     def lookupVar(n: String): Option[VariableSymbol] = {
-      // ToDo: Implement
+      // ToDo:
 
-      None: Option[VariableSymbol]
+      None
     }
-  }
+  } // end of class MethodSymbol
 
   class VariableSymbol(val name: String) extends Symbol
-}
+} // enod of object Symbols

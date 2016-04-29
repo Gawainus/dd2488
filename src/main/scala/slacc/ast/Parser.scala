@@ -82,7 +82,8 @@ object Parser extends Pipeline[Iterator[Token], Program] {
           }
           case _ => {
             if (currentToken.kind == IDKIND) {
-              val userDefinedFormal = new Formal(UserDefinedType(Identifier(currentToken.asInstanceOf[ID].value)),
+              val userDefinedFormal = new Formal(UserDefinedType(
+                Identifier(currentToken.asInstanceOf[ID].value)),
                 Identifier(id))
               readToken
               userDefinedFormal
@@ -188,7 +189,8 @@ object Parser extends Pipeline[Iterator[Token], Program] {
           }
           case _ => {
             if (currentToken.kind == IDKIND) {
-              val userDefinedVar = new VarDecl(UserDefinedType(Identifier(currentToken.asInstanceOf[ID].value)),
+              val userDefinedVar = new VarDecl(UserDefinedType(
+                Identifier(currentToken.asInstanceOf[ID].value)),
                 Identifier(id))
               readToken
               eat(SEMICOLON)
@@ -319,12 +321,12 @@ object Parser extends Pipeline[Iterator[Token], Program] {
         case EQUALS => {
           readToken
           val rhs = parseExprTree
-          parseRecursiveExprTree(Equals(firstExpr, rhs))
+          Equals(firstExpr, rhs)
         }
         case LESSTHAN => {
           readToken
           val rhs = parseExprTree
-          parseRecursiveExprTree(LessThan(firstExpr, rhs))
+          LessThan(firstExpr, rhs)
         }
         case PLUS | MINUS | TIMES | DIV => {
           parseTermList(firstExpr)
@@ -395,9 +397,14 @@ object Parser extends Pipeline[Iterator[Token], Program] {
               readToken
               val index = parseExprTree
               eat(RBRACKET)
-              eat(EQSIGN)
-              val expr = parseExprTree
-              ArrayAssign(identifier, index, expr)
+              if (currentToken.kind ==EQSIGN) {
+                readToken
+                val expr = parseExprTree
+                ArrayAssign(identifier, index, expr)
+              }
+              else {
+                ArrayRead(identifier, index)
+              }
             }
             case _ => {
               parseRecursiveExprTree(identifier)
@@ -607,7 +614,8 @@ object Parser extends Pipeline[Iterator[Token], Program] {
       }
       if (currentToken.kind == METHOD) {
         if (mainMethodFound) {
-          ctx.reporter.fatal("Exactly one MainMethod declared after class declarations. At least 2 found.")
+          ctx.reporter.fatal(
+            "Exactly one MainMethod declared after class declarations. At least 2 found.")
         }
         else {
           mainMethodFound = true
