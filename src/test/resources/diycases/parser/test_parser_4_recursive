@@ -1,0 +1,15 @@
+
+
+class Cat<: Animal {
+
+}
+
+class Animal {
+
+}
+
+method sample_1(var1: Int, var2 : Int[ ], var3 :Kitten): Cat = {
+
+
+
+}

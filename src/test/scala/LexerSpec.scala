@@ -5,7 +5,7 @@ package tests
 class LexerSpec extends TestBed {
 
   "Test 0: An empty file" should "return only EOF token" in {
-    assert(executeLexerDiyTest("test_0.slac"))
+    assert(executeLexerDiyTest("test_parser_0_trivial.slac"))
   }
 
   "Test 1: " should "print some tokens" in {

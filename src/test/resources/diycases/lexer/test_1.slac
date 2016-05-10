@@ -16,6 +16,7 @@ method sample_1(var1: Int, var2 :String): Int = {
   123/456
   */
   0;
+  000;
   new shit();
   3+2*(5+3)/4
 }

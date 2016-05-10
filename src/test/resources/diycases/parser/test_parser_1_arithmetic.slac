@@ -1,0 +1,30 @@
+// this test inspects the correct logic of arithmetic operations
+
+class c1 {
+    var c1v1: Int;
+}
+
+
+method run() = Unit {
+    var x: Int;
+    var y: Int;
+    var z: Int;
+
+    var c: Int;
+
+    // checking term parsing
+    c=x+1-2+y;
+
+    // checking factor parsing
+    c=x*y/z;
+
+    // mixed operations
+    c=1+2*x*1/z-3*4+1+1+1*1
+
+
+    // parenthesis overriding
+    c=1+2*x*1/z-3*(4+1)+(1+1)*1
+
+
+    true
+}

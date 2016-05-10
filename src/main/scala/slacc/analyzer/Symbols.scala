@@ -19,10 +19,55 @@ object Symbols {
     }
   }
 
+  class GlobalScope {
+    var mainClass: ClassSymbol = _
+    var classes = Map[String, ClassSymbol]()
+
+    def lookupClass(k: String): Option[ClassSymbol] = {
+      classes get k
+    }
+  } // end of class GlobalScope
+  
+  object GlobalScope {
+    def apply(): GlobalScope = new GlobalScope()
+  }
+
   sealed abstract class Symbol extends Positioned with Typed {
     val id: Int = ID.next
     val name: String
-  }
+  } // end of class Symbol
+
+  class ClassSymbol(val name: String) extends Symbol {
+
+    // Todo: May need to define the apply method
+    def apply(ClassSymbol: ClassSymbol) = ???
+
+    var parent: Option[ClassSymbol] = None
+    var members = Map[String, VariableSymbol]()
+    var methods = Map[String, MethodSymbol]()
+
+    def lookupMethod(k: String): Option[MethodSymbol] = {
+      methods get k
+    }
+    def lookupVar(k: String): Option[VariableSymbol] = {
+      members get k
+    }
+  } // end of class ClassSymbol
+
+
+  class MethodSymbol(val name: String, val classSymbol: ClassSymbol) extends Symbol {
+    var params = Map[String, VariableSymbol]()
+    var members = Map[String, VariableSymbol]()
+    var argList: List[VariableSymbol] = Nil
+    var overridden: Option[MethodSymbol] = None
+
+    def lookupVar(k: String): Option[VariableSymbol] = {
+      members get k
+    }
+  } // end of class MethodSymbol
+
+  class VariableSymbol(val name: String) extends Symbol
+
 
   private object ID {
     private var c: Int = 0
@@ -33,47 +78,4 @@ object Symbols {
       ret
     }
   }
-
-  class GlobalScope {
-    var mainClass: ClassSymbol = _
-    var classes = Map[String, ClassSymbol]()
-
-    def lookupClass(n: String): Option[ClassSymbol] = {
-      // Todo:
-
-      None
-    }
-  } // end of class GlobalScope
-
-  class ClassSymbol(val name: String) extends Symbol {
-    var parent: Option[ClassSymbol] = None
-    var methods = Map[String, MethodSymbol]()
-    var members = Map[String, VariableSymbol]()
-
-    def lookupMethod(n: String): Option[MethodSymbol] = {
-      // ToDo:
-
-      None
-    }
-    def lookupVar(n: String): Option[VariableSymbol] = {
-      // ToDo:
-
-      None
-    }
-  } // end of class ClassSymbol
-
-  class MethodSymbol(val name: String, val classSymbol: ClassSymbol) extends Symbol {
-    var params = Map[String, VariableSymbol]()
-    var members = Map[String, VariableSymbol]()
-    var argList: List[VariableSymbol] = Nil
-    var overridden: Option[MethodSymbol] = None
-
-    def lookupVar(n: String): Option[VariableSymbol] = {
-      // ToDo:
-
-      None
-    }
-  } // end of class MethodSymbol
-
-  class VariableSymbol(val name: String) extends Symbol
 } // enod of object Symbols

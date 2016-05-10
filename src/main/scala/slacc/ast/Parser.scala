@@ -9,7 +9,6 @@ import lexer.Tokens._
 object Parser extends Pipeline[Iterator[Token], Program] {
   val firstOfFactor = List[TokenKind](TIMES, DIV)
   val firstOfTerm = List[TokenKind](PLUS, MINUS)
-
   val symbolsOfRecursion = List[TokenKind](AND, OR, EQUALS, LESSTHAN, PLUS, MINUS, TIMES, DIV,
     LBRACKET, DOT)
 
@@ -25,7 +24,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
 
         // uses nextToken from the Lexer trait
         currentToken = tokens.next
-        println(currentToken.toString)
+        // println(currentToken.toString)
         // skips bad tokens
         while (currentToken.kind == BAD) {
           currentToken = tokens.next
@@ -99,7 +98,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
       }
     }
 
-    def parseMethodReturnType(): TypeTree = {
+    def parseMethodReturnType: TypeTree = {
       eat(RPAREN)
       eat(COLON)
 
@@ -224,7 +223,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
           parseParenExprTree
         }
         case _ => {
-          val firstExpr = parseExprTree()
+          val firstExpr = parseExprTree
           currentToken.kind match {
             case LBRACKET => {
               readToken
@@ -280,7 +279,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
 
         case MINUS => {
           readToken
-          val firstExpr = parseFactor()
+          val firstExpr = parseFactor
           val rhs = parseFactorList(firstExpr)
           Minus(lhs, rhs)
         }
@@ -361,7 +360,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
       }
     }
 
-    def parseExprTree(): ExprTree = {
+    def parseExprTree: ExprTree = {
       currentToken.kind match {
         // terminals
         case TRUE => {
@@ -397,7 +396,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
               readToken
               val index = parseExprTree
               eat(RBRACKET)
-              if (currentToken.kind ==EQSIGN) {
+              if (currentToken.kind == EQSIGN) {
                 readToken
                 val expr = parseExprTree
                 ArrayAssign(identifier, index, expr)
@@ -449,7 +448,6 @@ object Parser extends Pipeline[Iterator[Token], Program] {
         case LBRACE => {
           readToken
           val exprList = parseBlock
-          eat(RBRACE)
           Block(exprList)
         }
         case IF => {
@@ -467,7 +465,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
         case WHILE => {
           readToken
           val predicate = parseParenExprTree
-          val body = parseParenExprTree
+          val body = parseExprTree
           While(predicate, body)
         }
         case PRINTLN => {
@@ -480,7 +478,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
         }
 
         case _ => {
-          fatal("Invalid Expr")
+          fatal("Invalid Expr: " + currentToken.toString + " at " + currentToken.position)
         }
       }
     }
@@ -508,13 +506,12 @@ object Parser extends Pipeline[Iterator[Token], Program] {
     }
 
     // a block is a list of exprs
-    def parseBlock(): List[ExprTree] = {
+    def parseBlock: List[ExprTree] = {
       var exprList = List[ExprTree]()
 
-      readToken
       currentToken.kind match {
         case RBRACE => {
-          eat(RBRACE)
+          readToken
           exprList
         }
         case _ => {
@@ -529,16 +526,23 @@ object Parser extends Pipeline[Iterator[Token], Program] {
       }
     }
 
-    def parseMethodBody(): (List[VarDecl], List[ExprTree], ExprTree) = {
+    def parseMethodBody: (List[VarDecl], List[ExprTree]) = {
       eat(LBRACE)
       // parse the body
       var varList = List[VarDecl]();
       while (currentToken.kind == VAR) {
         varList :+= parseVarDecl
       }
-      val exprFirst = parseExprTree
-      val exprList = exprFirst::parseBlock
-      (varList, exprList, True())
+      var exprList = parseExprTree :: Nil
+
+      currentToken.kind match {
+        case SEMICOLON => {
+          readToken
+          exprList = exprList ::: parseBlock
+        }
+        case _ => eat(RBRACKET)
+      }
+      (varList, exprList)
     }
 
     def parseMethodDecl(id: ID): MethodDecl = {
@@ -549,20 +553,20 @@ object Parser extends Pipeline[Iterator[Token], Program] {
       currentToken.kind match {
         case IDKIND => {
           var formalList = List[Formal]()
-          formalList :+= parseFormal()
+          formalList :+= parseFormal
           while (currentToken.kind == COMMA) {
             readToken
-            formalList :+= parseFormal()
+            formalList :+= parseFormal
           }
-          val retType = parseMethodReturnType()
-          val (varList, exprList, exprTree) = parseMethodBody()
-          new MethodDecl(retType, methodId, formalList, varList, exprList , exprTree)
+          val retType = parseMethodReturnType
+          val (varList, exprList) = parseMethodBody
+          new MethodDecl(retType, methodId, formalList, varList, exprList , exprList.last)
         }
 
         case RPAREN => {
-          val retType = parseMethodReturnType()
-          val (varList, exprList, exprTree) = parseMethodBody()
-          new MethodDecl(retType, methodId, List[Formal](), varList, exprList , exprTree)
+          val retType = parseMethodReturnType
+          val (varList, exprList) = parseMethodBody
+          new MethodDecl(retType, methodId, List[Formal](), varList, exprList, exprList.last)
         }
         case _ => {
           ctx.reporter.fatal("Expecting arguments or right parenthesis.")
@@ -571,43 +575,53 @@ object Parser extends Pipeline[Iterator[Token], Program] {
     }
 
     def parseClass(id: ID): ClassDecl = {
-      readToken
-
       val classId = new Identifier(id.value)
-
-      // TODO: parent class
-      var varList = List[VarDecl]()
       readToken
-      while (currentToken.kind == VAR) {
-        val currVarDecl = parseVarDecl()
+      var parent: Option[Identifier] = None
+      if (currentToken.kind == LESSTHAN) {
+        readToken
+        eat(COLON)
+        currentToken.kind match {
+          case IDKIND => {
+            parent = Some(Identifier(currentToken.asInstanceOf[ID].value))
+            readToken
+          }
+          case _ => {
+            eat(IDKIND)
+          }
+        }
+      }
+      eat(LBRACE)
 
+      var varList = List[VarDecl]()
+      while (currentToken.kind == VAR) {
+        varList :+= parseVarDecl
         readToken
       }
 
       var methodList = List[MethodDecl]()
-
-      readToken
       while (currentToken.kind == METHOD) {
         eat(METHOD)
         currentToken match {
           case idToken: ID => {
-            parseMethodDecl(idToken)
+            methodList :+= parseMethodDecl(idToken)
             readToken
           }
           case _ => throw new ClassCastException
         }
       }
+      eat(RBRACE)
 
-      new ClassDecl(classId, None, varList, methodList)
+      new ClassDecl(classId, parent, varList, methodList)
     }
 
     def parseGoal(): Program = {
+      var classList = List[ClassDecl]()
       while (currentToken.kind == CLASS) {
-        eat(CLASS)
+        readToken
         currentToken match {
           case idToken: ID => {
-            parseClass(idToken)
-            readToken
+            classList :+= parseClass(idToken)
           }
           case _ => throw new ClassCastException
         }
@@ -623,7 +637,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
           currentToken match {
             case idToken: ID => {
               val mainMethod = new MainMethod(parseMethodDecl(idToken))
-              Program(mainMethod, List[ClassDecl]())
+              Program(mainMethod, classList)
             }
             case _ => throw new ClassCastException
           }

@@ -5,6 +5,7 @@ import java.io.File
 
 import lexer._
 import ast._
+import slacc.analyzer.NameAnalysis
 
 object Main {
 
@@ -91,9 +92,9 @@ object Main {
       println(Printer(ast))
     }
     else if (ctx.doSymbolIds) {
-      val pipeline = Lexer andThen Parser
-      val ast = pipeline.run(ctx)(ctx.files.head)
-      println(Printer(ast))
+      val pipeline1 = Lexer andThen Parser
+      val ast = pipeline1.run(ctx)(ctx.files.head)
+      NameAnalysis.run(ctx)(ast)
     }
     else {
       // TODO: find out what to do

@@ -1,0 +1,17 @@
+// this test inspects the correct logic of arithmetic operations
+
+class c1 {
+    var c1v1: Int;
+}
+
+
+method run() = Unit {
+
+   false;
+   id1;
+   self;
+   "str1";
+   123;
+   true
+
+}

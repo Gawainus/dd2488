@@ -1,0 +1,35 @@
+
+
+class Cat<: Animal {
+
+}
+
+class Animal {
+
+}
+
+method sample_1(var1: Int, var2 : Int[ ], var3 :Kitten): Cat = {
+
+    // new Int [ Expression ]
+
+    // new Identifier ( )
+
+    // ! Expression
+
+    // ( Expression )
+
+    // { ( Expression ( ; Expression )* )? }
+
+    // if ( Expression ) Expression ( else Expression )?
+
+    // while ( Expression ) Expression
+
+    // println ( Expression )
+
+    // strOf ( Expression )
+
+    // Identifier = Expression
+
+    // Identifier [ Expression ] = Expression
+
+}
