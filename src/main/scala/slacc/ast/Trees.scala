@@ -24,7 +24,6 @@ object Trees {
                        methods: List[MethodDecl])
     extends Tree with Symbolic[ClassSymbol]
 
-  case class VarDecl(tpe: TypeTree, id: Identifier) extends Tree with Symbolic[VariableSymbol]
 
   case class MethodDecl(retType: TypeTree,
                         id: Identifier,
@@ -34,7 +33,10 @@ object Trees {
                         retExpr: ExprTree)
     extends Tree with Symbolic[MethodSymbol] {}
 
+  case class VarDecl(tpe: TypeTree, id: Identifier) extends Tree with Symbolic[VariableSymbol]
+
   sealed case class Formal(tpe: TypeTree, id: Identifier) extends Tree with Symbolic[VariableSymbol]
+
 
   sealed trait TypeTree extends Tree with Typed
   case class IntArrayType() extends TypeTree
@@ -42,7 +44,7 @@ object Trees {
   case class BooleanType() extends TypeTree
   case class StringType() extends TypeTree
   case class UnitType() extends TypeTree
-  case class UserDefinedType(identifier: Identifier) extends TypeTree
+  case class UserDefinedType(id: Identifier) extends TypeTree
 
   sealed trait ExprTree extends Tree with Typed
   case class And(lhs: ExprTree, rhs: ExprTree) extends ExprTree

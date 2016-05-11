@@ -69,7 +69,7 @@ class TestBed extends FlatSpec {
     val ctx = processOptions(inputs)
     val pipeline = Lexer andThen Parser
     val ast = pipeline.run(ctx)(ctx.files.head)
-    val result: String = Printer(ast)
+    val result: String = Printer(ctx)(ast)
     val resultPath = pathPrinter + testFileName + ".printer"
 
     writeResult(resultPath, result)
@@ -80,7 +80,7 @@ class TestBed extends FlatSpec {
     val ctx2 = processOptions(inputs)
     val pipeline2 = Lexer andThen Parser
     val ast2 = pipeline.run(ctx)(ctx.files.head)
-    val result2: String = Printer(ast2)
+    val result2: String = Printer(ctx)(ast2)
     val resultPath2 = pathPrinter2 + testFileName + ".printer"
 
     writeResult(resultPath2, result2)

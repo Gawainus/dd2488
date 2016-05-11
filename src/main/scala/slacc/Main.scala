@@ -89,7 +89,7 @@ object Main {
     else if (ctx.doPrintMain) {
       val pipeline = Lexer andThen Parser
       val ast = pipeline.run(ctx)(ctx.files.head)
-      println(Printer(ast))
+      println(Printer(ctx)(ast))
     }
     else if (ctx.doSymbolIds) {
       val pipeline1 = Lexer andThen Parser

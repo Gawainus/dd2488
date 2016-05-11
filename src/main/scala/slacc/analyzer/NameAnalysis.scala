@@ -10,81 +10,135 @@ object NameAnalysis extends Pipeline[Program, Program] {
 
   def run(ctx: Context)(prog: Program): Program = {
 
+    def collectMethodSymbol(methodDecl: MethodDecl, classSymbol: ClassSymbol): MethodSymbol = {
+      val methodSymbol = new MethodSymbol(methodDecl.id.value, classSymbol)
+
+      // parameters
+      var argList = List[VariableSymbol]()
+      for (argDecl <- methodDecl.args) {
+        val paramSymbol = new VariableSymbol(argDecl.id.value)
+        methodSymbol.params += (paramSymbol.name -> paramSymbol)
+        argList :+= paramSymbol
+      }
+      // arg list
+      methodSymbol.argList = argList
+
+      // member variables
+      for (varDecl <- methodDecl.vars) {
+        val memberSymbol = new VariableSymbol(varDecl.id.value)
+        methodSymbol.members += (memberSymbol.name -> memberSymbol)
+      }
+
+      // overridden
+
+      // finished, add to class
+      classSymbol.methods += (methodSymbol.name -> methodSymbol)
+
+      methodSymbol
+    }
+
     val gs = GlobalScope()
 
     println("Starting Name Analysis:")
 
     // Step 1: Collect symbols in declarations
+    for (classDecl <- prog.classes) {
+      val classSymbol = new ClassSymbol(classDecl.id.value)
 
-
-    for(classDecl <- prog.classes) {
-      gs.classes + (classDecl.id.value -> classDecl)
-      val classSymbol = classDecl.asInstanceOf[ClassSymbol]
-
+      // add members
       for (memberDecl <- classDecl.vars) {
-        classSymbol.members + (memberDecl.id.value -> memberDecl)
+        val memberSymbol = new VariableSymbol(memberDecl.id.value)
+        classSymbol.members += (memberSymbol.name -> memberSymbol)
       }
 
+      // add methods
       for (methodDecl <- classDecl.methods) {
-        classSymbol.methods + (methodDecl.id.value -> methodDecl)
-        val methodSymbol = methodDecl.asInstanceOf[MethodSymbol]
+        collectMethodSymbol(methodDecl, classSymbol)
+      }
 
-        for (argDecl <- methodDecl.args) {
-          methodSymbol.params
+      // add class to the map
+      gs.classes += (classDecl.id.value -> classSymbol)
+    }
 
+    // set parents if any
+    for (classDecl <- prog.classes) {
+      if (classDecl.parent.isDefined) {
+        val className = classDecl.id.value
+        val parentName = classDecl.parent.get.value
+
+        val classSymbol = gs.classes get className
+        val classParentSymbol = gs.classes get parentName
+
+        if (classParentSymbol.isDefined) {
+          classSymbol.get.parent = classParentSymbol
         }
-
-        for (varDecl <- methodDecl.vars) {
-          methodSymbol.members
+        else {
+          // report error
+          println("Warning: A parent, " +  parentName + ",  of class, " + className + ", is not define.")
         }
-
-        methodSymbol.argList = List[VariableSymbol]()
-
       }
     }
 
     val mainClassDecl = prog.main
     val mainMethodDecl = mainClassDecl.main
-    val mainMethodSymbol = mainMethodDecl.asInstanceOf[MethodSymbol]
 
-    for (argDecl <- mainMethodDecl.args) {
-      mainMethodSymbol.params
+    val mainClassSymbol = new ClassSymbol(mainClassDecl.id.value)
+    val mainMethodSymbol = collectMethodSymbol(mainMethodDecl, mainClassSymbol)
 
-    }
-
-    for (varDecl <- mainMethodDecl.vars) {
-      mainMethodSymbol.members
-    }
-
-    mainMethodSymbol.argList = List[VariableSymbol]()
-
+    gs.mainClass = mainClassSymbol
 
 
     // Step 2: Attach symbols to identifiers (except method calls) in method bodies
 
-    // wrap the main method into Main class
-    mainClassDecl.setSymbol(new ClassSymbol("Main"))
-    mainMethodDecl.setSymbol(new MethodSymbol(mainMethodDecl.id.value, mainClassDecl.getSymbol))
+    def setMethodSymbols(methodDecl: MethodDecl, methodSymbol: MethodSymbol): Unit = {
 
-    for (varDecl <- mainMethodDecl.vars) {
-      varDecl.id.setSymbol(new VariableSymbol(varDecl.id.value))
-    }
-    for (expr <- mainMethodDecl.exprs) {
-      if (expr.isInstanceOf[Identifier]) {
+      for (argDecl <- methodDecl.args) {
+        val argName = argDecl.id.value
+        val argSymbol = (methodSymbol.params get argName).get
 
-      }
-    }
-
-    for (expr <- prog.main.exprs) {
-      if (expr.isInstanceOf[Identifier]) {
-        val identifier = expr.asInstanceOf[Identifier]
-        identifier.setSymbol(new VariableSymbol(identifier.value))
+        argDecl.setSymbol(argSymbol)
       }
 
+      for (varDecl <- methodDecl.vars) {
+        val varName = varDecl.id.value
+        val varSymbol = (methodSymbol.members get varName).get
+
+        varDecl.setSymbol(varSymbol)
+      }
+
+      methodDecl.setSymbol(methodSymbol)
     }
+
+    for (classDecl <- prog.classes) {
+      val className = classDecl.id.value
+      val classSymbol = (gs.classes get className).get
+
+      if (classDecl.parent.isDefined) {
+        val parentName = classDecl.parent.get.value
+        val parentSymbol = gs.classes get parentName
+
+        classDecl.parent.get.setSymbol(parentSymbol.get)
+        classSymbol.parent = parentSymbol
+
+      }
+
+      for (methodDecl <- classDecl.methods) {
+        val methodName = methodDecl.id.value
+        val methodSymbol = (classSymbol.methods get methodName).get
+
+        setMethodSymbols(methodDecl, methodSymbol)
+      }
+
+      classDecl.setSymbol(classSymbol)
+    }
+
+    mainMethodDecl.setSymbol(mainMethodSymbol)
+    mainClassDecl.setSymbol(mainClassSymbol)
+    setMethodSymbols(mainMethodDecl, mainMethodSymbol)
+
 
     // (Step 3:) Print tree with symbol ids for debugging
-    println(Printer(prog))
+    println(Printer(ctx)(prog))
 
     // Make sure you check all constraints
 
