@@ -8,12 +8,19 @@ import analyzer.Types._
 object Trees {
   sealed trait Tree extends Positioned
 
+  sealed trait Identified {
+    val id: Identifier
+    def getName: String = {
+      id.value
+    }
+  }
+
   case class Program(main: MainMethod, classes: List[ClassDecl]) extends Tree
 
   // Note: we attach a `ClassSymbol`,
   // because the main method should be put into a (synthetic) class called "Main";
   // the attached `ClassSymbol` is then the symbol of this "Main" class.
-  case class MainMethod(main: MethodDecl) extends Tree with Symbolic[ClassSymbol] {
+  case class MainMethod(main: MethodDecl) extends Tree with Identified with Symbolic[ClassSymbol] {
     val id = Identifier("Main")
     def exprs: List[ExprTree] = main.exprs ::: (main.retExpr :: Nil)
   }
@@ -22,7 +29,7 @@ object Trees {
                        parent: Option[Identifier],
                        vars: List[VarDecl],
                        methods: List[MethodDecl])
-    extends Tree with Symbolic[ClassSymbol]
+    extends Tree with Identified with Symbolic[ClassSymbol]
 
 
   case class MethodDecl(retType: TypeTree,
@@ -31,41 +38,46 @@ object Trees {
                         vars: List[VarDecl],
                         exprs: List[ExprTree],
                         retExpr: ExprTree)
-    extends Tree with Symbolic[MethodSymbol] {}
+    extends Tree with Identified with Symbolic[MethodSymbol]
 
-  case class VarDecl(tpe: TypeTree, id: Identifier) extends Tree with Symbolic[VariableSymbol]
+  case class VarDecl(tpe: TypeTree, id: Identifier) extends Tree
+    with Identified with Symbolic[VariableSymbol]
 
-  sealed case class Formal(tpe: TypeTree, id: Identifier) extends Tree with Symbolic[VariableSymbol]
+  sealed case class Formal(tpe: TypeTree, id: Identifier) extends Tree
+    with Identified with Symbolic[VariableSymbol]
 
 
   sealed trait TypeTree extends Tree with Typed
-  case class IntArrayType() extends TypeTree
-  case class IntType() extends TypeTree
-  case class BooleanType() extends TypeTree
-  case class StringType() extends TypeTree
-  case class UnitType() extends TypeTree
-  case class UserDefinedType(id: Identifier) extends TypeTree
+  case class IntArrayType() extends TypeTree {setType(TIntArray)}
+  case class IntType() extends TypeTree {setType(TInt)}
+  case class BooleanType() extends TypeTree {setType(TBoolean)}
+  case class StringType() extends TypeTree {setType(TString)}
+  case class UnitType() extends TypeTree {setType(TUnit)}
+  case class UserDefinedType(name: String) extends TypeTree {setType(TClass(name))}
+
 
   sealed trait ExprTree extends Tree with Typed
-  case class And(lhs: ExprTree, rhs: ExprTree) extends ExprTree
-  case class Or(lhs: ExprTree, rhs: ExprTree) extends ExprTree
+  case class And(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs) setType TBoolean}
+  case class Or(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs) setType TBoolean}
 
-  case class Plus(lhs: ExprTree, rhs: ExprTree) extends ExprTree
-  case class Minus(lhs: ExprTree, rhs: ExprTree) extends ExprTree
-  case class Times(lhs: ExprTree, rhs: ExprTree) extends ExprTree
-  case class Div(lhs: ExprTree, rhs: ExprTree) extends ExprTree
+  case class LessThan(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs) setType TBoolean}
+  case class Equals(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs) setType TBoolean}
 
-  case class LessThan(lhs: ExprTree, rhs: ExprTree) extends ExprTree
-  case class Equals(lhs: ExprTree, rhs: ExprTree) extends ExprTree
+  case class Plus(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs)}
+  case class Minus(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs)}
+  case class Times(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs)}
+  case class Div(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs)}
 
-  case class ArrayRead(arr: ExprTree, index: ExprTree) extends ExprTree
-  case class ArrayLength(arr: ExprTree) extends ExprTree
-  case class MethodCall(obj: ExprTree, meth: Identifier, args: List[ExprTree]) extends ExprTree
-  case class IntLit(value: Int) extends ExprTree
-  case class StringLit(value: String) extends ExprTree
+  case class ArrayRead(arr: ExprTree, index: ExprTree) extends ExprTree {setPos(arr)}
+  case class ArrayLength(arr: ExprTree) extends ExprTree {setPos(arr)}
+  case class MethodCall(obj: ExprTree, meth: Identifier, args: List[ExprTree])
+    extends ExprTree {setPos(obj)}
 
-  case class True() extends ExprTree
-  case class False() extends ExprTree
+  case class IntLit(value: Int) extends ExprTree {setType(TInt)}
+  case class StringLit(value: String) extends ExprTree {setType(TString)}
+
+  case class True() extends ExprTree {setType(TBoolean)}
+  case class False() extends ExprTree {setType(TBoolean)}
 
   case class Identifier(value: String) extends TypeTree with ExprTree with Symbolic[Symbol] {
     // The type of the identifier depends on the type of the symbol
@@ -79,20 +91,23 @@ object Trees {
       case vs: VariableSymbol =>
         vs.getType
     }
-    override def setType(tpe: Type) = this
+    override def setType(tpe: Type) = {
+      sys.error("Type of an Identifier is overriden by its Symbol's type. You can only set its Symbol")
+      this
+    }
   } // end of class Identifer
 
   case class Self() extends ExprTree with Symbolic[ClassSymbol]
-  case class NewIntArray(size: ExprTree) extends ExprTree
+
+  case class NewIntArray(size: ExprTree) extends ExprTree {setType(TIntArray)}
   case class New(tpe: Identifier) extends ExprTree
-  case class Not(expr: ExprTree) extends ExprTree
+  case class Not(expr: ExprTree) extends ExprTree {setType(TBoolean)}
 
-  case class Block(exprs: List[ExprTree]) extends ExprTree
-  case class If(expr: ExprTree, thn: ExprTree, els: Option[ExprTree]) extends ExprTree
-  case class While(cond: ExprTree, body: ExprTree) extends ExprTree
-  case class Println(expr: ExprTree) extends ExprTree
-  case class Assign(id: Identifier, expr: ExprTree) extends ExprTree
-  case class ArrayAssign(id: Identifier, index: ExprTree, expr: ExprTree) extends ExprTree
-  case class Strof(expr: ExprTree) extends ExprTree
-
+  case class Block(exprs: List[ExprTree]) extends ExprTree {setType(TUnit)}
+  case class If(cond: ExprTree, thn: ExprTree, els: Option[ExprTree]) extends ExprTree {setType(TUnit)}
+  case class While(cond: ExprTree, body: ExprTree) extends ExprTree {setType(TUnit)}
+  case class Println(expr: ExprTree) extends ExprTree {setType(TUnit)}
+  case class Assign(id: Identifier, expr: ExprTree) extends ExprTree {setPos(id)}
+  case class ArrayAssign(id: Identifier, index: ExprTree, expr: ExprTree) extends ExprTree {setPos(id)}
+  case class StrOf(expr: ExprTree) extends ExprTree {setType(TString)}
 } // end of object Trees

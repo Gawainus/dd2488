@@ -67,7 +67,7 @@ object Main {
     println(" --tokens      displays the list of tokens")
     println(" --ast         displays the AST")
     println(" --print       pretty-prints the program")
-    println("--symid        pretty-prints the program with Name Analysis")
+    println("--symid        Name Analysis")
     println(" -d <outdir>   generates class files in the specified directory")
   }
 
@@ -81,6 +81,14 @@ object Main {
         println(n+"("+n.line+":"+n.col+")")
       }
     }
+    else if (ctx.doSymbolIds) {
+      val pipeline1 = Lexer andThen Parser
+      val ast = pipeline1.run(ctx)(ctx.files.head)
+      val nameAnalysis = NameAnalysis.run(ctx)(ast)
+      if (ctx.doPrintMain) {
+        println(Printer(ctx)(nameAnalysis))
+      }
+    }
     else if (ctx.doAST) {
       val pipeline = Lexer andThen Parser
       val ast = pipeline.run(ctx)(ctx.files.head)
@@ -91,11 +99,7 @@ object Main {
       val ast = pipeline.run(ctx)(ctx.files.head)
       println(Printer(ctx)(ast))
     }
-    else if (ctx.doSymbolIds) {
-      val pipeline1 = Lexer andThen Parser
-      val ast = pipeline1.run(ctx)(ctx.files.head)
-      NameAnalysis.run(ctx)(ast)
-    }
+
     else {
       // TODO: find out what to do
       val pipeline = Lexer andThen Parser

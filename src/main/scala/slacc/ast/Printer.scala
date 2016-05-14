@@ -2,6 +2,7 @@ package slacc
 package ast
 
 import Trees._
+import slacc.analyzer.Symbols._
 import utils._
 
 object Printer {
@@ -9,22 +10,28 @@ object Printer {
     val defaultIndent = "  "
     val numOfFirstLevelIndents = 1
 
+    def getSymbolStr(symbol: Symbol): String = {
+      if (ctx.doSymbolIds) {
+        "#" + symbol.id
+      }
+      else {
+        ""
+      }
+    }
+
     def processClassStr(classDecl: ClassDecl) : String = {
-      val sb: StringBuilder = new StringBuilder()
+      val sb = new StringBuilder()
 
       sb.append("class ")
-      sb.append(classDecl.id.value)
-      if (ctx.doSymbolIds) {
-        sb.append("#" + classDecl.getSymbol.id + " ")
-      }
+      sb.append(classDecl.getName)
+      sb.append(getSymbolStr(classDecl.getSymbol))
+
       if (classDecl.parent.isDefined) {
         val parent = classDecl.parent
-        sb.append("<: " + parent.get.value)
-        if (ctx.doSymbolIds) {
-          sb.append("#" + parent.get.getSymbol.id + " ")
-        }
+        sb.append(" <: " + parent.get.value)
+        sb.append(getSymbolStr(parent.get.getSymbol))
       }
-      sb.append("{\n")
+      sb.append(" {\n")
 
 
       for (varItr <- classDecl.vars) {
@@ -52,10 +59,9 @@ object Printer {
 
       sb.append(getNumIndents(initialIndentCount))
       sb.append("method " + methodName)
-      if (ctx.doSymbolIds) {
-        sb.append("#" + methodDecl.getSymbol.id + "(")
-      }
-      sb.append(processFormalStr(args) + ") : " + processTypeStr(retType) +" = {\n")
+      sb.append(getSymbolStr(methodDecl.getSymbol))
+      sb.append("(" + processFormalStr(args) + ") : ")
+      sb.append(processTypeStr(retType) +" = {\n")
 
       val indentCount = initialIndentCount+1
       for (varItr <- vars) {
@@ -75,55 +81,76 @@ object Printer {
       sb.toString()
     }
 
-    def processExprStr(exprDecl: ExprTree, initialIndentCount: Int) : String = exprDecl match {
-        case And(_,_) =>
-          "(" + processExprStr(exprDecl.asInstanceOf[And].lhs, initialIndentCount) +
-          " && " + processExprStr(exprDecl.asInstanceOf[And].rhs, initialIndentCount) + ")"
+    def processExprStr(exprDecl: ExprTree, initialIndentCount: Int) : String = {
+      val sb: StringBuilder = new StringBuilder()
 
-        case Or(_,_) =>
-          "(" + processExprStr(exprDecl.asInstanceOf[Or].lhs, initialIndentCount) +
-          " || " + processExprStr(exprDecl.asInstanceOf[Or].rhs, initialIndentCount) + ")"
+      exprDecl match {
+        case and: And =>
+          "(" +
+            processExprStr(and.lhs, initialIndentCount) +
+            " && " +
+            processExprStr(and.rhs, initialIndentCount) +
+            ")"
 
-        case Plus(_,_) =>
-          "(" + processExprStr(exprDecl.asInstanceOf[Plus].lhs, initialIndentCount) +
-          " + " + processExprStr(exprDecl.asInstanceOf[Plus].rhs, initialIndentCount) + ")"
+        case or: Or =>
+          "(" +
+            processExprStr(or.lhs, initialIndentCount) +
+            " || " +
+            processExprStr(or.rhs, initialIndentCount) +
+            ")"
 
-        case Minus(_,_) =>
-          "(" + processExprStr(exprDecl.asInstanceOf[Minus].lhs, initialIndentCount) +
-          " - " + processExprStr(exprDecl.asInstanceOf[Minus].rhs, initialIndentCount) + ")"
+        case plus: Plus =>
+          "(" +
+            processExprStr(plus.lhs, initialIndentCount) +
+            " + " +
+            processExprStr(plus.rhs, initialIndentCount) +
+            ")"
 
-        case Times(_,_) =>
-          "(" + processExprStr(exprDecl.asInstanceOf[Times].lhs, initialIndentCount) +
-          " * " + processExprStr(exprDecl.asInstanceOf[Times].rhs, initialIndentCount) + ")"
+        case minus: Minus =>
+          "(" +
+            processExprStr(minus.lhs, initialIndentCount) +
+            " - " +
+            processExprStr(minus.rhs, initialIndentCount) +
+            ")"
 
-        case Div(_,_) =>
-          "(" + processExprStr(exprDecl.asInstanceOf[Div].lhs, initialIndentCount) +
-          " / " + processExprStr(exprDecl.asInstanceOf[Div].rhs, initialIndentCount) + ")"
+        case times: Times =>
+          "(" +
+            processExprStr(times.lhs, initialIndentCount) +
+            " * " +
+            processExprStr(times.rhs, initialIndentCount) +
+            ")"
 
-        case LessThan(_,_) =>
-          processExprStr(exprDecl.asInstanceOf[LessThan].lhs, initialIndentCount) +
-          " < " + processExprStr(exprDecl.asInstanceOf[LessThan].rhs, initialIndentCount)
+        case div: Div =>
+          "(" +
+            processExprStr(div.lhs, initialIndentCount) +
+            " / " +
+            processExprStr(div.rhs, initialIndentCount) +
+            ")"
 
-        case Equals(_,_) =>
-          processExprStr(exprDecl.asInstanceOf[Equals].lhs, initialIndentCount) +
-          " == " + processExprStr(exprDecl.asInstanceOf[Equals].rhs, initialIndentCount)
+        case lt: LessThan =>
+          processExprStr(lt.lhs, initialIndentCount) +
+            " < " +
+            processExprStr(lt.rhs, initialIndentCount)
 
-        case ArrayRead(_,_) =>
-          processExprStr(exprDecl.asInstanceOf[ArrayRead].arr, initialIndentCount) +
-          " [" + processExprStr(exprDecl.asInstanceOf[ArrayRead].index, initialIndentCount) + "] "
+        case eq: Equals =>
+          processExprStr(eq.lhs, initialIndentCount) +
+            " == " +
+            processExprStr(eq.rhs, initialIndentCount)
 
-        case ArrayLength(_) =>
-          processExprStr(exprDecl.asInstanceOf[ArrayLength].arr, initialIndentCount) + ".length"
+        case arrRead: ArrayRead =>
+          processExprStr(arrRead.arr, initialIndentCount) +
+            "[" + processExprStr(arrRead.index, initialIndentCount) + "] "
 
-        case MethodCall(_,_,_) =>
-          val sb: StringBuilder = new StringBuilder
+        case arrLen: ArrayLength =>
+          processExprStr(arrLen.arr, initialIndentCount) + ".length"
 
-          sb.append(processExprStr(exprDecl.asInstanceOf[MethodCall].obj, initialIndentCount))
+        case methodCall: MethodCall =>
+          sb.append(processExprStr(methodCall.obj, initialIndentCount))
           sb.append(".")
-          sb.append(processExprStr(exprDecl.asInstanceOf[MethodCall].meth, initialIndentCount))
+          sb.append(processExprStr(methodCall.meth, initialIndentCount))
           sb.append("(")
 
-          val params = exprDecl.asInstanceOf[MethodCall].args
+          val params = methodCall.args
           for (param <- params) {
             sb.append(processExprStr(param, initialIndentCount + 1))
             sb.append(", ")
@@ -137,103 +164,103 @@ object Printer {
         case True() => "true"
         case Self() => "self"
 
-        case IntLit(_) => exprDecl.asInstanceOf[IntLit].value.toString
-        case StringLit(_) => "\"" + exprDecl.asInstanceOf[StringLit].value + "\""
+        case intLit: IntLit => intLit.value.toString
+        case strLit: StringLit => "\"" + strLit.value + "\""
 
-        case Identifier(_) =>
-          val identifier = exprDecl.asInstanceOf[Identifier]
-          identifier.value
+        case id: Identifier =>
+          sb.append(id.value)
+          sb.append(getSymbolStr(id.getSymbol))
+          sb.toString
 
-        case NewIntArray(_) => "new Int[" +
-          processExprStr(exprDecl.asInstanceOf[NewIntArray].size, initialIndentCount) + "]"
+        case newIntArr: NewIntArray =>
+          "new Int[" +
+          processExprStr(newIntArr.size, initialIndentCount) +
+          "]"
 
-        case New(_) =>
-          "new " + exprDecl.asInstanceOf[New].tpe.value + "()"
+        case newStmt: New =>
+          "new " + newStmt.tpe.value + "()"
 
-        case Not(_) =>
-          "!(" + processExprStr(exprDecl.asInstanceOf[Not].expr, initialIndentCount)+")"
+        case not: Not =>
+          "!(" + processExprStr(not.expr, initialIndentCount)+")"
 
         // statements
-        case Block(_) =>
-          val sb: StringBuilder = new StringBuilder
+        case block: Block =>
           sb.append("{\n")
-
-          var exprs = exprDecl.asInstanceOf[Block].exprs
-          for (i <- 0 until exprs.length) {
-            sb.append(getNumIndents(initialIndentCount + 1) +
-              processExprStr(exprs(i), initialIndentCount + 1))
-            if (i < exprs.length - 1)
-              sb.append(";")
+          for (expr <- block.exprs) {
+            sb.append(getNumIndents(initialIndentCount + 1))
+            sb.append(processExprStr(expr, initialIndentCount + 1))
+            sb.append(";")
             sb.append("\n")
+          }
+          if (sb.length > 2) {
+            sb.setLength(sb.length-2)
           }
           sb.append(getNumIndents(initialIndentCount) + "}\n")
           sb.toString
 
-        case If(_, _, _) =>
-          val sb: StringBuilder = new StringBuilder()
-          sb.append("if (" +
-            processExprStr(exprDecl.asInstanceOf[If].expr, initialIndentCount) + ")\n")
-          sb.append(getNumIndents(initialIndentCount + 1) +
-            processExprStr(exprDecl.asInstanceOf[If].thn, initialIndentCount + 1) + "\n")
-          if (exprDecl.asInstanceOf[If].els.isDefined) {
-            sb.append(getNumIndents(initialIndentCount) +
-              "else \n " + getNumIndents(initialIndentCount + 1) +
-              processExprStr(exprDecl.asInstanceOf[If].els.get, initialIndentCount + 1))
+        case ifStmt: If =>
+          sb.append("if (")
+          sb.append(processExprStr(ifStmt.cond, initialIndentCount) + ")\n")
+          sb.append(getNumIndents(initialIndentCount + 1))
+          sb.append(processExprStr(ifStmt.thn, initialIndentCount + 1) + "\n")
+
+          if (ifStmt.els.isDefined) {
+            sb.append(getNumIndents(initialIndentCount))
+            sb.append("else \n ")
+            sb.append(getNumIndents(initialIndentCount + 1))
+            sb.append(processExprStr(ifStmt.els.get, initialIndentCount + 1))
           }
           sb.toString
 
-        case While(_,_) =>
-          val sb: StringBuilder = new StringBuilder()
-          sb.append("while (" +
-            processExprStr(exprDecl.asInstanceOf[While].cond, initialIndentCount) + ")")
-          sb.append(" " + processExprStr(exprDecl.asInstanceOf[While].body, 1) + "\n")
+        case whileStmt: While =>
+          sb.append("while (")
+          sb.append(processExprStr(whileStmt.cond, initialIndentCount) + ") ")
+          sb.append(" " + processExprStr(whileStmt.body, 1) + "\n")
           sb.toString
 
-        case Println(_) =>
-          "println(" +
-          processExprStr(exprDecl.asInstanceOf[Println].expr, initialIndentCount) + ")"
+        case println: Println =>
+          "println(" + processExprStr(println.expr, initialIndentCount) + ")"
 
-        case Assign(_,_) =>
-          exprDecl.asInstanceOf[Assign].id.value + " = " +
-          processExprStr(exprDecl.asInstanceOf[Assign].expr, initialIndentCount)
+        case assign: Assign =>
+          sb.append(assign.id.value)
+          sb.append(getSymbolStr(assign.id.getSymbol))
+          sb.append(" = ")
+          sb.append(processExprStr(assign.expr, initialIndentCount))
+          sb.toString
 
-        case ArrayAssign(_,_,_) =>
-          val arr = exprDecl.asInstanceOf[ArrayAssign]
-          arr.id.value + "[" + processExprStr(arr.index, initialIndentCount) + "] = " +
-            processExprStr(arr.expr, initialIndentCount)
+        case arrAssign: ArrayAssign =>
+          arrAssign.id.value + "[" + processExprStr(arrAssign.index, initialIndentCount) + "] = " +
+            processExprStr(arrAssign.expr, initialIndentCount)
 
-        case Strof(_) =>
-          "strOf(" + processExprStr(exprDecl.asInstanceOf[Strof].expr, initialIndentCount) + ")"
+        case strOf: StrOf =>
+          "StrOf(" + processExprStr(strOf.expr, initialIndentCount) + ")"
         case _ =>
           "Type Undefined."
+      }
     }
 
     def processVarStr(varDecl: VarDecl): String = {
       val sb = new StringBuilder()
-      sb.append("var " + varDecl.id.value)
 
-      if (ctx.doSymbolIds) {
-        sb.append("#" + varDecl.getSymbol.id)
-      }
-
+      sb.append("var " + varDecl.getName)
+      sb.append(getSymbolStr(varDecl.getSymbol))
       sb.append(": " + processTypeStr(varDecl.tpe))
       sb.toString()
     }
 
     def processFormalStr(formals : List[Formal]) : String = {
-      val sb: StringBuilder = new StringBuilder()
+      val sb = new StringBuilder()
 
       for (formalItr <- formals) {
-        sb.append(formalItr.id.value)
-
-        if (ctx.doSymbolIds) {
-          sb.append("#" + formalItr.getSymbol.id)
-        }
-
+        sb.append(formalItr.getName)
+        sb.append(getSymbolStr(formalItr.getSymbol))
         sb.append(": " + processTypeStr(formalItr.tpe))
         sb.append(", ")
       }
-      sb.setLength(sb.length-2) // discard the last two chars
+
+      if (sb.length > 2) {
+        sb.setLength(sb.length-2) // discard the last two chars
+      }
       sb.toString
     }
 
@@ -244,7 +271,8 @@ object Printer {
         case IntArrayType() => "Int[]"
         case UnitType() => "Unit"
         case Identifier(_) => tpe.asInstanceOf[Identifier].value
-        case UserDefinedType(_) => tpe.asInstanceOf[UserDefinedType].id.value
+        case udt: UserDefinedType =>
+          udt.name + getSymbolStr(udt.getSymbol)
         case _ => "Type Undefined."
     }
 
@@ -253,10 +281,10 @@ object Printer {
     }
 
     t match {
-      case Program(_, _) =>
-        val prog = t.asInstanceOf[Program]
+      case Program(_,_) =>
         val sb: StringBuilder = new StringBuilder()
 
+        val prog = t.asInstanceOf[Program]
         val classList = prog.classes
         classList.map(classDecl => sb.append(processClassStr(classDecl)))
 

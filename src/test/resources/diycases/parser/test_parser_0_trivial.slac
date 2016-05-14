@@ -1,16 +1,48 @@
 
-
-class Cat<: Animal {
+class Kitten <: Animal {
+    var kittenV0: Int;
+    var kittenV1: Int[];
 
 }
 
+class Cat<: Animal {
+    var catV0: Int;
+    method a1(): Int = {
+
+        catV0
+    }
+
+
+    method c1(s1: String, s2: String): Animal = {
+
+        new Animal()
+    }
+}
+
 class Animal {
+
+    var animalV0: Int;
+    var animalV1: Boolean;
+    var animalV2: Boolean;
+    var animalV3: Boolean;
+
+    method a1(): Unit = {
+
+        animalV1&&animalV2 &&animalV3;
+        animalV0
+
+    }
+
 
 }
 
 method sample_1(var1: Int, var2 : Int[ ], var3 :Kitten): Cat = {
 
     var x1: Int;
+    var animal1: Animal;
+
+    animal1 = new Animal();
+    x1;
     1;
     2;
     3

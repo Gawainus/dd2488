@@ -15,8 +15,64 @@ object TypeChecking extends Pipeline[Program, Program] {
     def tcExpr(expr: ExprTree, expected: Type*): Type = {
       val tpe: Type = {
         // TODO: Compute type for each kind of expression
+        expr match {
+          case And(_,_) | Or(_,_) | LessThan(_,_) | Equals(_,_) | True() | False() | Not(_) =>
+            TBoolean
 
-          TUntyped
+          case Plus(_,_) | Minus(_,_) | Times(_,_) | Div(_,_) =>
+            TInt
+
+          case ArrayRead(arr, index) =>
+            arr.getType
+
+          case ArrayLength(_) =>
+            TInt
+
+          case MethodCall(obj, meth, argList) =>
+            TUnit
+
+          case IntLit(_) =>
+            TInt
+
+          case StringLit(_) =>
+            TString
+
+          case Identifier(id) =>
+            expr.getType
+
+          case Self() =>
+            expr.getType
+
+          case NewIntArray(_) =>
+            TIntArray
+
+          case New(tpe) =>
+            tpe.getType
+
+          case Block(exprs) =>
+            TUnit
+
+          case If(cond, thn, els) =>
+            TUnit
+
+          case While(cond, body) =>
+            TUnit
+
+          case Println(_) =>
+            TString
+
+          case Assign(id, expr) =>
+            id.getType
+
+          case ArrayAssign(id, index, expr) =>
+            id.getType
+
+          case StrOf(_) =>
+            TString
+
+          case _ =>
+            TUnit
+        }
       }
 
 

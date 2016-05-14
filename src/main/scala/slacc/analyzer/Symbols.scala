@@ -17,6 +17,13 @@ object Symbols {
       case Some(s) => s
       case None => sys.error("Accessing undefined symbol.")
     }
+
+    private var _accessCount: Int = 0
+    def getAccessCount: Int = _accessCount
+    def increAccessCount: Unit = {
+      _accessCount += 1
+    }
+
   }
 
   class GlobalScope {
@@ -54,6 +61,9 @@ object Symbols {
     }
   } // end of class ClassSymbol
 
+  object ClassSymbol {
+    def apply(name: String): ClassSymbol = new ClassSymbol(name)
+  }
 
   class MethodSymbol(val name: String, val classSymbol: ClassSymbol) extends Symbol {
     var params = Map[String, VariableSymbol]()
@@ -61,12 +71,17 @@ object Symbols {
     var argList: List[VariableSymbol] = Nil
     var overridden: Option[MethodSymbol] = None
 
-    def lookupVar(k: String): Option[VariableSymbol] = {
-      members get k
-    }
+    def lookupVar(k: String): Option[VariableSymbol] = {members get k}
   } // end of class MethodSymbol
 
+  object MethodSymbol {
+    def apply(name: String, classSymbol: ClassSymbol): MethodSymbol = new MethodSymbol(name, classSymbol)
+  }
+
   class VariableSymbol(val name: String) extends Symbol
+  object VariableSymbol {
+    def apply(name: String): VariableSymbol = new VariableSymbol(name)
+  }
 
 
   private object ID {

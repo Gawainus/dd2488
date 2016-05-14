@@ -1,7 +1,7 @@
 package slacc
 package analyzer
 
-import Symbols._
+import slacc.analyzer.Symbols._
 
 object Types {
   trait Typed {
@@ -68,17 +68,36 @@ object Types {
     override def toString = "Unit"
   }
 
-  case object TClass extends Type {
-    override def isSubTypeOf(tpe: Type): Boolean = tpe match {
-      case TClass => true
-      case _ => false
+  case class TClass(name: String) extends Type {
+
+    override def isSubTypeOf(tpe: Type): Boolean = {
+      false
     }
-    override def toString = "Class"
+
+    def isSubClassOf(parentName: String): Boolean = {
+
+      false
+    }
+
+    override def toString = "TClass " + name
   }
+
 
   // Todo: fix this
   case class TObject(classSymbol: ClassSymbol) extends Type {
-    override def isSubTypeOf(tpe: Type): Boolean = ???
+    val className = classSymbol.name
+
+    override def isSubTypeOf(tpe: Type): Boolean = tpe match {
+      case TObject(tpeSymbol) =>
+
+        val testName = tpeSymbol.name
+
+
+        true
+      case _ =>
+        false
+    }
+
     override def toString = classSymbol.name
   }
 
