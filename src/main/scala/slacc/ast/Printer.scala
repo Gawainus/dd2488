@@ -147,7 +147,7 @@ object Printer {
         case methodCall: MethodCall =>
           sb.append(processExprStr(methodCall.obj, initialIndentCount))
           sb.append(".")
-          sb.append(processExprStr(methodCall.meth, initialIndentCount))
+          sb.append(methodCall.meth.value + "#??")
           sb.append("(")
 
           val params = methodCall.args
@@ -155,8 +155,10 @@ object Printer {
             sb.append(processExprStr(param, initialIndentCount + 1))
             sb.append(", ")
           }
+          if (params.length > 0) {
+            sb.setLength(sb.length-2)
 
-          sb.setLength(sb.length-2)
+          }
           sb.append(")")
           sb.toString
 
@@ -169,6 +171,7 @@ object Printer {
 
         case id: Identifier =>
           sb.append(id.value)
+//          println(id.position)
           sb.append(getSymbolStr(id.getSymbol))
           sb.toString
 
@@ -178,7 +181,7 @@ object Printer {
           "]"
 
         case newStmt: New =>
-          "new " + newStmt.tpe.value + "()"
+          "new " + newStmt.cls.value + "()"
 
         case not: Not =>
           "!(" + processExprStr(not.expr, initialIndentCount)+")"
@@ -270,8 +273,12 @@ object Printer {
         case BooleanType() => "Bool"
         case IntArrayType() => "Int[]"
         case UnitType() => "Unit"
-        case Identifier(_) => tpe.asInstanceOf[Identifier].value
+
+        case id: Identifier =>
+          id.value
+
         case udt: UserDefinedType =>
+          println(udt.name + udt.position)
           udt.name + getSymbolStr(udt.getSymbol)
         case _ => "Type Undefined."
     }

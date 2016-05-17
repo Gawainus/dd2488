@@ -46,14 +46,16 @@ object Trees {
   sealed case class Formal(tpe: TypeTree, id: Identifier) extends Tree
     with Identified with Symbolic[VariableSymbol]
 
-
   sealed trait TypeTree extends Tree with Typed
-  case class IntArrayType() extends TypeTree {setType(TIntArray)}
   case class IntType() extends TypeTree {setType(TInt)}
+  case class LongType() extends TypeTree {setType(TLong)}
+  case class IntArrayType() extends TypeTree {setType(TIntArray)}
+  case class Double() extends TypeTree {setType(TDouble)}
   case class BooleanType() extends TypeTree {setType(TBoolean)}
   case class StringType() extends TypeTree {setType(TString)}
   case class UnitType() extends TypeTree {setType(TUnit)}
-  case class UserDefinedType(name: String) extends TypeTree {setType(TClass(name))}
+
+  case class UserDefinedType(name: String) extends TypeTree with Symbolic[ClassSymbol]
 
 
   sealed trait ExprTree extends Tree with Typed
@@ -68,8 +70,9 @@ object Trees {
   case class Times(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs)}
   case class Div(lhs: ExprTree, rhs: ExprTree) extends ExprTree {setPos(lhs)}
 
-  case class ArrayRead(arr: ExprTree, index: ExprTree) extends ExprTree {setPos(arr)}
-  case class ArrayLength(arr: ExprTree) extends ExprTree {setPos(arr)}
+  case class ArrayRead(arr: ExprTree, index: ExprTree) extends ExprTree {setPos(arr) setType(TInt)}
+  case class ArrayLength(arr: ExprTree) extends ExprTree {setPos(arr) setType(TInt)}
+
   case class MethodCall(obj: ExprTree, meth: Identifier, args: List[ExprTree])
     extends ExprTree {setPos(obj)}
 
@@ -83,11 +86,11 @@ object Trees {
     // The type of the identifier depends on the type of the symbol
     override def getType: Type = getSymbol match {
       case cs: ClassSymbol =>
-        TObject(cs)
+        TClass(cs)
 
       case ms: MethodSymbol =>
-        sys.error("Requesting type of a method identifier.")
-
+        //sys.error("Requesting type of a method identifier.")
+        ms.getType
       case vs: VariableSymbol =>
         vs.getType
     }
@@ -100,14 +103,17 @@ object Trees {
   case class Self() extends ExprTree with Symbolic[ClassSymbol]
 
   case class NewIntArray(size: ExprTree) extends ExprTree {setType(TIntArray)}
-  case class New(tpe: Identifier) extends ExprTree
+  case class New(cls: Identifier) extends ExprTree
+
   case class Not(expr: ExprTree) extends ExprTree {setType(TBoolean)}
 
   case class Block(exprs: List[ExprTree]) extends ExprTree {setType(TUnit)}
   case class If(cond: ExprTree, thn: ExprTree, els: Option[ExprTree]) extends ExprTree {setType(TUnit)}
   case class While(cond: ExprTree, body: ExprTree) extends ExprTree {setType(TUnit)}
   case class Println(expr: ExprTree) extends ExprTree {setType(TUnit)}
-  case class Assign(id: Identifier, expr: ExprTree) extends ExprTree {setPos(id)}
-  case class ArrayAssign(id: Identifier, index: ExprTree, expr: ExprTree) extends ExprTree {setPos(id)}
+  case class Assign(id: Identifier, expr: ExprTree)
+    extends ExprTree {setPos(id)}
+  case class ArrayAssign(id: Identifier, index: ExprTree, expr: ExprTree)
+    extends ExprTree {setPos(id)}
   case class StrOf(expr: ExprTree) extends ExprTree {setType(TString)}
 } // end of object Trees

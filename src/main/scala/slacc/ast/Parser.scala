@@ -23,10 +23,10 @@ object Parser extends Pipeline[Iterator[Token], Program] {
     def readToken: Unit = {
       if (tokens.hasNext) {
         // uses nextToken from the Lexer trait
-        currentToken = tokens.next
+          currentToken = tokens.next
         // println(currentToken.toString)
         // skips bad tokens
-        while (currentToken.kind == BAD) {
+        while (currentToken.kind == BAD || currentToken.kind == CMT) {
           currentToken = tokens.next
         }
       }
@@ -164,7 +164,6 @@ object Parser extends Pipeline[Iterator[Token], Program] {
             val typeName = currentToken.asInstanceOf[ID].value
             val userDefinedType = UserDefinedType(typeName)
             userDefinedType.setPos(retTypeToken)
-            userDefinedType.setType(TClass(typeName))
 
             readToken
             eat(EQSIGN)
@@ -259,10 +258,6 @@ object Parser extends Pipeline[Iterator[Token], Program] {
     def parseFactor: ExprTree = {
       val factorToken = currentToken
       factorToken.kind match {
-        case IDKIND =>
-          val idStr = factorToken.asInstanceOf[ID].value
-          readToken
-          Identifier(idStr).setPos(factorToken)
 
         case INTLITKIND =>
           val intValue = factorToken.asInstanceOf[INTLIT].value
@@ -273,30 +268,7 @@ object Parser extends Pipeline[Iterator[Token], Program] {
           parseParenExprTree
 
         case _ =>
-          val firstExpr = parseExprTree
-          currentToken.kind match {
-            case LBRACKET =>
-              readToken
-              val index = parseExprTree
-              ArrayRead(firstExpr, index)
-
-            case DOT =>
-              readToken
-              currentToken.kind match {
-                case LENGTH =>
-                  ArrayLength(firstExpr)
-
-                case IDKIND =>
-                  val idStr = currentToken.asInstanceOf[ID].value
-                  val params = parseParams
-                  MethodCall(firstExpr, Identifier(idStr), params)
-
-                case _ =>
-                  fatal("Not a valid DOT operation")
-              }
-            case _ =>
-              fatal("Undefined Expression detected.")
-          }
+          parseExprTree
       }
     }
 
@@ -434,7 +406,8 @@ object Parser extends Pipeline[Iterator[Token], Program] {
             case EQSIGN =>
               readToken
 
-              val expr = parseExprTree
+              val firstExpr = parseExprTree
+              val expr = parseFactorList(firstExpr)
               Assign(identifier, expr)
 
             case LBRACKET =>
@@ -456,7 +429,9 @@ object Parser extends Pipeline[Iterator[Token], Program] {
 
           }
         case SELF =>
-          Self().setPos(currentToken)
+          val selfExpr = Self().setPos(currentToken)
+          readToken
+          parseRecursiveExprTree(selfExpr)
 
         // non recursive start
         case NEW =>
@@ -469,14 +444,16 @@ object Parser extends Pipeline[Iterator[Token], Program] {
               eat(LBRACKET)
               val size = parseExprTree
               eat(RBRACKET)
-              NewIntArray(size).setPos(newToken)
+              val newIntArr = NewIntArray(size).setPos(newToken)
+              parseRecursiveExprTree(newIntArr)
 
             case IDKIND =>
               val idStr = currentToken.asInstanceOf[ID].value
               readToken
               eat(LPAREN)
               eat(RPAREN)
-              New(Identifier(idStr)).setPos(newToken)
+              val newObj = New(Identifier(idStr)).setPos(newToken)
+              parseRecursiveExprTree(newObj)
 
             case _ =>
               fatal("Not valid New statement.")
@@ -503,7 +480,6 @@ object Parser extends Pipeline[Iterator[Token], Program] {
 
           val predicate = parseParenExprTree
           val ifExprList = parseExprTree
-          readToken
           var elseExprList = None: Option[ExprTree]
           if (currentToken.kind == ELSE) {
             readToken
@@ -549,11 +525,9 @@ object Parser extends Pipeline[Iterator[Token], Program] {
 
         case _ =>
           exprList :+= parseExprTree
-          readToken
           while(currentToken.kind == COMMA) {
             readToken
             exprList :+= parseExprTree
-            readToken
           }
           eat(RPAREN)
           exprList

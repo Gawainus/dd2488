@@ -13,68 +13,142 @@ object TypeChecking extends Pipeline[Program, Program] {
     import ctx.reporter._
 
     def tcExpr(expr: ExprTree, expected: Type*): Type = {
-      val tpe: Type = {
-        // TODO: Compute type for each kind of expression
+      def csTypeOfExpr(expr: ExprTree): Type = {
         expr match {
-          case And(_,_) | Or(_,_) | LessThan(_,_) | Equals(_,_) | True() | False() | Not(_) =>
-            TBoolean
 
-          case Plus(_,_) | Minus(_,_) | Times(_,_) | Div(_,_) =>
-            TInt
+          case and: And =>
+            tcExpr(and.lhs, TBoolean)
+            tcExpr(and.rhs, TBoolean)
+            and.getType
 
-          case ArrayRead(arr, index) =>
-            arr.getType
+          case or: Or =>
+            tcExpr(or.lhs, TBoolean)
+            tcExpr(or.rhs, TBoolean)
+            or.getType
 
-          case ArrayLength(_) =>
-            TInt
+          case lt: LessThan =>
+            tcExpr(lt.lhs, TInt)
+            tcExpr(lt.rhs, TInt)
+            lt.getType
 
-          case MethodCall(obj, meth, argList) =>
-            TUnit
 
-          case IntLit(_) =>
-            TInt
+          case eq: Equals =>
+            tcExpr(eq.lhs, TInt)
+            tcExpr(eq.rhs, TInt)
+            eq.getType
 
-          case StringLit(_) =>
-            TString
+          case p: Plus =>
+            tcExpr(p.lhs, TInt, TString)
+            tcExpr(p.rhs, TInt, TString)
+            p.getType
 
-          case Identifier(id) =>
-            expr.getType
+          case mi: Minus =>
+            tcExpr(mi.lhs, TInt)
+            tcExpr(mi.rhs, TInt)
+            mi.getType
 
-          case Self() =>
-            expr.getType
+          case mul: Times =>
+            tcExpr(mul.lhs, TInt)
+            tcExpr(mul.rhs, TInt)
+            mul.getType
 
-          case NewIntArray(_) =>
-            TIntArray
+          case div: Div =>
+            tcExpr(div.lhs, TInt)
+            tcExpr(div.rhs, TInt)
+            div.getType
 
-          case New(tpe) =>
-            tpe.getType
+          case arrRead: ArrayRead =>
+            tcExpr(arrRead.arr, TIntArray)
+            tcExpr(arrRead.index, TInt)
+            arrRead.getType
 
-          case Block(exprs) =>
-            TUnit
+          case arrLen: ArrayLength =>
+            tcExpr(arrLen.arr, TIntArray)
+            arrLen.getType
 
-          case If(cond, thn, els) =>
-            TUnit
+          case mc: MethodCall =>
+            tcExpr(mc.obj)
+            val callee = mc.obj.getType.asInstanceOf[TClass].classSymbol.methods get mc.meth.value
+            mc.meth.setSymbol(callee.get)
+            mc.setType(mc.meth.getType)
+            mc.getType
 
-          case While(cond, body) =>
-            TUnit
+          case intLit: IntLit =>
+            intLit.getType
 
-          case Println(_) =>
-            TString
+          case strLit: StringLit =>
+            strLit.getType
 
-          case Assign(id, expr) =>
+          case t: True =>
+            t.getType
+
+          case f: False =>
+            f.getType
+
+          case id: Identifier =>
             id.getType
 
-          case ArrayAssign(id, index, expr) =>
-            id.getType
+          case s: Self =>
+            s.setType(s.getSymbol.getType)
+            s.getType
 
-          case StrOf(_) =>
-            TString
+          case nia: NewIntArray =>
+            nia.getType
+
+          case n: New =>
+            n.setType(n.cls.getType)
+            n.getType
+
+          case not: Not =>
+            tcExpr(not.expr, TBoolean)
+            not.getType
+
+          case b: Block =>
+            for (e <- b.exprs) {
+              tcExpr(e)
+            }
+            b.getType
+
+          case i: If =>
+            tcExpr(i.cond, TBoolean)
+            tcExpr(i.thn)
+            if (i.els.isDefined) {
+              tcExpr(i.els.get)
+            }
+            i.getType
+
+          case w: While =>
+            tcExpr(w.cond, TBoolean)
+            tcExpr(w.body)
+            w.getType
+
+          case pr: Println =>
+            tcExpr(pr.expr, TString, TInt, TBoolean)
+            pr.getType
+
+          case ass: Assign =>
+            tcExpr(ass.expr, ass.id.getType)
+            ass.id.getSymbol.setType(ass.expr.getType)
+            ass.setType(ass.id.getType)
+            ass.getType
+
+          case arrAss: ArrayAssign =>
+            tcExpr(arrAss.id, TIntArray)
+            tcExpr(arrAss.index, TInt)
+            tcExpr(arrAss.expr, TInt)
+            arrAss.setType(arrAss.id.getType)
+            arrAss.getType
+
+          case strOf: StrOf =>
+            tcExpr(strOf.expr, TString, TInt)
+            strOf.getType
 
           case _ =>
-            TUnit
+            TError
         }
       }
-
+      // TODO: Compute type for each kind of expression
+      val tpe: Type = csTypeOfExpr(expr)
 
       // Check result and return a valid type in case of error
       if (expected.isEmpty) {
@@ -86,6 +160,21 @@ object TypeChecking extends Pipeline[Program, Program] {
         tpe
       }
     }
+
+    def csMethodDeclTypes(md: MethodDecl): Unit = {
+      for (e <- md.exprs) {
+        tcExpr(e)
+      }
+    }
+
+    for (classDecl <- prog.classes) {
+
+      for (methodDecl <- classDecl.methods) {
+        csMethodDeclTypes(methodDecl)
+      }
+    }
+
+    csMethodDeclTypes(prog.main.main)
 
     prog
   }

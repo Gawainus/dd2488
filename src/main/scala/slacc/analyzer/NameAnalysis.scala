@@ -1,15 +1,17 @@
 package slacc
 package analyzer
 
-import slacc.analyzer.Symbols.{ClassSymbol, GlobalScope, MethodSymbol, VariableSymbol}
+import slacc.analyzer.Symbols._
 import slacc.analyzer.Types.TClass
 import slacc.ast.Trees._
 import slacc.utils._
 
 object NameAnalysis extends Pipeline[Program, Program] {
 
+
   def run(ctx: Context)(prog: Program): Program = {
     import ctx.reporter._
+
 
     def collectMethodSymbol(methodDecl: MethodDecl, classSymbol: ClassSymbol): MethodSymbol = {
       val methodSymbol = MethodSymbol(methodDecl.getName, classSymbol)
@@ -55,7 +57,7 @@ object NameAnalysis extends Pipeline[Program, Program] {
     for (classDecl <- prog.classes) {
       val classSymbol = ClassSymbol(classDecl.getName)
       classSymbol.setPos(classDecl)
-      classSymbol.setType(TClass(classDecl.getName))
+      classSymbol.setType(TClass(classSymbol))
 
       // add members
       for (memberDecl <- classDecl.vars) {
@@ -104,69 +106,85 @@ object NameAnalysis extends Pipeline[Program, Program] {
 
 
     // Step 2: Attach symbols to identifiers (except method calls) in method bodies
+    def setClassSymbolIfUdt(tpe: TypeTree): Unit = {
+      tpe match {
+        case udt: UserDefinedType =>
+          val symbol = gs.classes get udt.name
+          udt.setPos(symbol.get)
+          udt.setSymbol(symbol.get)
+          udt.setType(symbol.get.getType)
+
+        case _ =>
+
+      }
+    }
 
     def setMethodSymbols(methodDecl: MethodDecl, methodSymbol: MethodSymbol): Unit = {
 
       for (argDecl <- methodDecl.args) {
-        val argName = argDecl.id.value
+        val argName = argDecl.getName
         val argSymbol = (methodSymbol.params get argName).get
 
         argDecl.setSymbol(argSymbol)
+        setClassSymbolIfUdt(argDecl.tpe)
+        argSymbol.setType(argDecl.tpe.getType)
       }
 
       for (varDecl <- methodDecl.vars) {
-        val varName = varDecl.id.value
+        val varName = varDecl.getName
         val varSymbol = (methodSymbol.members get varName).get
 
         varDecl.setSymbol(varSymbol)
+        setClassSymbolIfUdt(varDecl.tpe)
+        varSymbol.setType(varDecl.tpe.getType)
+      }
+
+      methodDecl.retType match {
+        case rt: UserDefinedType =>
+          val symbol = (gs.classes get rt.name).get
+          rt.setSymbol(symbol)
+
+        case _ => {}
       }
 
       def setMethodExprsSymbols(methodDecl: MethodDecl, methodSymbol: MethodSymbol): Unit = {
         def setExprSymbol(expr: ExprTree, methodSymbol: MethodSymbol): Unit = {
+
           def setVarSymbolIfIdentifier(expr: ExprTree, methodSymbol: MethodSymbol): Unit = {
-            def getVarSymbol(name: String, methodSymbol: MethodSymbol): Option[VariableSymbol] = {
-              val varSymbolFromParams = methodSymbol.params get name
-              val varSymbolFromMembers = methodSymbol.members get name
+            def getSymbol(name: String, methodSymbol: MethodSymbol): Option[Symbol] = {
+              val symbolFromParams = methodSymbol.params get name
+              val symbolFromMembers = methodSymbol.members get name
 
               val classSymbol = methodSymbol.classSymbol
-              val varSymbolFromClass = classSymbol.members get name
+              val symbolFromClass = classSymbol.members get name
 
-              if (varSymbolFromParams.isDefined) {
-                varSymbolFromParams
+              if (symbolFromParams.isDefined) {
+                symbolFromParams
               }
-              else if (varSymbolFromMembers.isDefined) {
-                varSymbolFromMembers
+              else if (symbolFromMembers.isDefined) {
+                symbolFromMembers
               }
-              else if (varSymbolFromClass.isDefined) {
-                varSymbolFromClass
+              else if (symbolFromClass.isDefined) {
+                symbolFromClass
               }
               else {
-                var parent = classSymbol.parent
-                var varSymbol: Option[VariableSymbol] = None
-
-                while (parent.isDefined && varSymbol.isEmpty) {
-                  varSymbol = parent.get.members get name
-                  parent = parent.get.parent
-                }
-                varSymbol
+                gs.classes get name
               }
             }
             expr match {
               case id: Identifier =>
-                val varSymbol = getVarSymbol(id.value, methodSymbol)
-                if (varSymbol.isDefined) {
-                  id.setSymbol(varSymbol.get)
+                val symbol = getSymbol(id.value, methodSymbol)
+                if (symbol.isDefined) {
+                  id.setSymbol(symbol.get)
                 }
                 else {
                   error("Undeclared identifier: " + id.value, id)
-
                 }
               case _ =>
                 setExprSymbol(expr, methodSymbol)
             }
           }
-
-          def setMethodSymbolIfIdentifier(expr: ExprTree, classSymbol: ClassSymbol): Unit = {
+          def setMethodSymbolIfIdentifier(obj: Symbolic[ClassSymbol], expr: ExprTree): Unit = {
             def getMethodSymbol(name: String, classSymbol: ClassSymbol): Option[MethodSymbol] = {
               val msFromClass = classSymbol.methods get name
               if (msFromClass.isDefined) {
@@ -185,7 +203,7 @@ object NameAnalysis extends Pipeline[Program, Program] {
             }
             expr match {
               case id: Identifier =>
-                val ms = getMethodSymbol(id.value, classSymbol)
+                val ms = getMethodSymbol(id.value, obj.getSymbol)
                 if (ms.isDefined) {
                   id.setSymbol(ms.get)
                 }
@@ -196,6 +214,7 @@ object NameAnalysis extends Pipeline[Program, Program] {
                 setExprSymbol(expr, methodSymbol)
             }
           }
+
           expr match {
             case and: And =>
               setVarSymbolIfIdentifier(and.lhs, methodSymbol)
@@ -237,7 +256,16 @@ object NameAnalysis extends Pipeline[Program, Program] {
               setVarSymbolIfIdentifier(arrLeng.arr, methodSymbol)
 
             case methodCall: MethodCall =>
-              setVarSymbolIfIdentifier(methodCall.obj, methodSymbol)
+
+              val callee = methodCall.obj
+              callee match {
+                case identifier: Identifier =>
+                  setVarSymbolIfIdentifier(callee, methodSymbol)
+
+                case _=>
+
+              }
+              // setMethodSymbolIfIdentifier(identifier, methodCall.meth)
 
               for (arg <- methodCall.args) {
                 setVarSymbolIfIdentifier(arg, methodSymbol)
@@ -245,6 +273,15 @@ object NameAnalysis extends Pipeline[Program, Program] {
 
             case id: Identifier =>
               setVarSymbolIfIdentifier(id, methodSymbol)
+
+            case newStmt: New =>
+              setVarSymbolIfIdentifier(newStmt.cls, methodSymbol)
+
+            case newIntArr: NewIntArray =>
+              val size = newIntArr.size
+              if (size.isInstanceOf[Identifier]) {
+                setVarSymbolIfIdentifier(newIntArr.size, methodSymbol)
+              }
 
             case not: Not =>
               setVarSymbolIfIdentifier(not.expr, methodSymbol)
@@ -294,7 +331,6 @@ object NameAnalysis extends Pipeline[Program, Program] {
       methodDecl.setSymbol(methodSymbol)
     }
 
-
     // set symbols for every class
     for (classDecl <- prog.classes) {
       val className = classDecl.id.value
@@ -314,6 +350,8 @@ object NameAnalysis extends Pipeline[Program, Program] {
         val varSymbol = (classSymbol.members get varName).get
 
         varDecl.setSymbol(varSymbol)
+        setClassSymbolIfUdt(varDecl.tpe)
+        varSymbol.setType(varDecl.tpe.getType)
       }
 
       for (methodDecl <- classDecl.methods) {

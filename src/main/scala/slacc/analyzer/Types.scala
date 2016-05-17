@@ -44,12 +44,29 @@ object Types {
     override def toString = "Int"
   }
 
+  case object TLong extends Type {
+    override def isSubTypeOf(tpe: Type): Boolean = tpe match {
+      case TLong => true
+      case _ => false
+    }
+    override def toString = "Long"
+  }
+
   case object TIntArray extends Type {
     override def isSubTypeOf(tpe: Type): Boolean = tpe match {
       case TIntArray => true
       case _ => false
     }
     override def toString = "IntArray"
+  }
+
+
+  case object TDouble extends Type {
+    override def isSubTypeOf(tpe: Type): Boolean = tpe match {
+      case TDouble => true
+      case _ => false
+    }
+    override def toString = "Double"
   }
 
   case object TString extends Type {
@@ -68,32 +85,28 @@ object Types {
     override def toString = "Unit"
   }
 
-  case class TClass(name: String) extends Type {
-
-    override def isSubTypeOf(tpe: Type): Boolean = {
-      false
-    }
-
-    def isSubClassOf(parentName: String): Boolean = {
-
-      false
-    }
-
-    override def toString = "TClass " + name
-  }
-
-
   // Todo: fix this
-  case class TObject(classSymbol: ClassSymbol) extends Type {
-    val className = classSymbol.name
+  case class TClass(classSymbol: ClassSymbol) extends Type {
+    def getClassName = classSymbol.name
 
     override def isSubTypeOf(tpe: Type): Boolean = tpe match {
-      case TObject(tpeSymbol) =>
+      case tCls: TClass =>
+        val targetName = tCls.getClassName
+        if (getClassName.equals(targetName)) {
+          true
+        }
+        else {
+          var matched = false
+          var parent= classSymbol.parent
+          while (classSymbol.parent.isDefined && !matched) {
+            if (parent.get.name.equals(targetName)) {
+              matched = true
+            }
+            parent = classSymbol.parent
+          }
+          matched
+        }
 
-        val testName = tpeSymbol.name
-
-
-        true
       case _ =>
         false
     }
@@ -102,5 +115,5 @@ object Types {
   }
 
   // special object to implement the fact that all objects are its subclasses
-  val anyObject = TObject(new ClassSymbol("Object"))
+  val anyObject = TClass(ClassSymbol("Object"))
 }

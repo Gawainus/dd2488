@@ -5,7 +5,8 @@ import java.io.File
 
 import lexer._
 import ast._
-import slacc.analyzer.NameAnalysis
+import slacc.analyzer.{NameAnalysis, TypeChecking}
+import code._
 
 object Main {
 
@@ -82,8 +83,8 @@ object Main {
       }
     }
     else if (ctx.doSymbolIds) {
-      val pipeline1 = Lexer andThen Parser
-      val ast = pipeline1.run(ctx)(ctx.files.head)
+      val pipeline = Lexer andThen Parser
+      val ast = pipeline.run(ctx)(ctx.files.head)
       val nameAnalysis = NameAnalysis.run(ctx)(ast)
       if (ctx.doPrintMain) {
         println(Printer(ctx)(nameAnalysis))
@@ -92,18 +93,23 @@ object Main {
     else if (ctx.doAST) {
       val pipeline = Lexer andThen Parser
       val ast = pipeline.run(ctx)(ctx.files.head)
-      println(ast)
+      if (ctx.doPrintMain) {
+        println(ast)
+      }
     }
     else if (ctx.doPrintMain) {
       val pipeline = Lexer andThen Parser
       val ast = pipeline.run(ctx)(ctx.files.head)
+
       println(Printer(ctx)(ast))
     }
 
     else {
-      // TODO: find out what to do
       val pipeline = Lexer andThen Parser
       val ast = pipeline.run(ctx)(ctx.files.head)
+      val na = NameAnalysis.run(ctx)(ast)
+      val tc = TypeChecking.run(ctx)(na)
+      CodeGeneration.run(ctx)(tc)
     }
   }
 }

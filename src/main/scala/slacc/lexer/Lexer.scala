@@ -122,7 +122,7 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
   private def matchSymbol(source: Source, f: File): Token = {
     val cc = currChar.get
     cc match {
-      case '(' | ')' | '+' | '*' | ':' | ';' | '.' | ','| '!' | '[' | ']' | '{' |'}' => {
+      case '(' | ')' | '+' | '-' | '*' | ':' | ';' | '.' | ','| '!' | '[' | ']' | '{' |'}' => {
         resetCurrCharAndReturnToken(cc, f)
       }
 
@@ -230,6 +230,7 @@ object Lexer extends Pipeline[File, Iterator[Token]] {
       case '(' => new Token(LPAREN).setPos(f, pos)
       case ')' => new Token(RPAREN).setPos(f, pos)
       case '+' => new Token(PLUS).setPos(f, pos)
+      case '-' => new Token(MINUS).setPos(f, pos)
       case '*' => new Token(TIMES).setPos(f, pos)
       case ':' => new Token(COLON).setPos(f, pos)
       case ';' => new Token(SEMICOLON).setPos(f, pos)

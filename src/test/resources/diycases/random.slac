@@ -1,0 +1,31 @@
+class B <: A {
+  method foo(): Unit = {
+    println("I am class B.")
+  }
+}
+
+class A {
+  var a1: Int;
+
+  method foo(f1: Bool): Unit = {
+
+    if (f1) {
+    println("I am class A. f1 true")
+
+    }
+    else {
+        println("I am class A. f1 false")
+
+    }
+  }
+}
+
+method main(): Unit = {
+  var a: A;
+
+  a = new B();
+  a.foo(false);
+
+  println("Privit")
+
+}

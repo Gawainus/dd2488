@@ -22,9 +22,9 @@ class Cat<: Animal {
 class Animal {
 
     var animalV0: Int;
-    var animalV1: Boolean;
-    var animalV2: Boolean;
-    var animalV3: Boolean;
+    var animalV1: Bool;
+    var animalV2: Bool;
+    var animalV3: Bool;
 
     method a1(): Unit = {
 
@@ -42,6 +42,7 @@ method sample_1(var1: Int, var2 : Int[ ], var3 :Kitten): Cat = {
     var animal1: Animal;
 
     animal1 = new Animal();
+    animal1.a1();
     x1;
     1;
     2;
